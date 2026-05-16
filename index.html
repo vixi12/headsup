@@ -56,27 +56,20 @@ input[type="text"]:focus { border-color: var(--purple); }
 
 /* SETTINGS */
 .settings-block { background: var(--surface2); border-radius: 14px; padding: 14px; border: 0.5px solid var(--border); margin-bottom: 12px; }
-.time-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 0; }
-.time-btn { background: var(--bg); border: 0.5px solid var(--border2); border-radius: 10px; padding: 8px 4px; text-align: center; cursor: pointer; transition: all 0.15s; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--text); }
-.time-btn:hover { border-color: var(--purple-border); }
-.time-btn.sel { background: var(--purple-dim); border-color: var(--purple); color: var(--purple); }
-
-/* TYPE SELECTOR (Personas / Cosas / Ambas) */
+.sel-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.sel-btn { background: var(--bg); border: 0.5px solid var(--border2); border-radius: 10px; padding: 8px 4px; text-align: center; cursor: pointer; transition: all 0.15s; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--text); }
+.sel-btn:hover { border-color: var(--purple-border); }
+.sel-btn.on { background: var(--purple-dim); border-color: var(--purple); color: var(--purple); }
 .type-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 12px; }
-.type-btn { background: var(--bg); border: 0.5px solid var(--border2); border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer; transition: all 0.15s; font-size: 11px; font-weight: 600; color: var(--muted); }
-.type-btn.sel { background: var(--purple-dim); border-color: var(--purple); color: var(--text); }
-.type-btn .ticon { font-size: 20px; display: block; margin-bottom: 4px; }
-
-/* CAT GRID */
+.type-btn { background: var(--bg); border: 0.5px solid var(--border2); border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer; transition: all 0.15s; font-size: 12px; font-weight: 600; color: var(--muted); }
+.type-btn.on { background: var(--purple-dim); border-color: var(--purple); color: var(--text); }
 .cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.cat-grid.things { grid-template-columns: 1fr 1fr; }
 .cbt { background: var(--bg); border: 0.5px solid var(--border2); border-radius: 12px; padding: 10px 8px; text-align: center; cursor: pointer; transition: all 0.15s; }
 .cbt:hover { border-color: var(--purple-border); }
-.cbt.sel { background: var(--purple-dim); border-color: var(--purple); }
+.cbt.on { background: var(--purple-dim); border-color: var(--purple); }
 .cbt.all-btn { grid-column: 1 / -1; }
-.ci { font-size: 20px; margin-bottom: 3px; }
 .cn { font-size: 11px; font-weight: 600; }
-.cc { font-size: 9px; color: var(--muted); margin-top: 1px; }
+.cc { font-size: 9px; color: var(--muted); margin-top: 2px; }
 
 /* GAME */
 .gwrap { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; }
@@ -84,38 +77,29 @@ input[type="text"]:focus { border-color: var(--purple); }
 .tring svg { transform: rotate(-90deg); }
 .tnum { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800; }
 .ttag { font-size: 11px; color: var(--muted); text-align: center; margin-bottom: 12px; letter-spacing: 0.05em; }
-
-/* WORD CARD */
-.wcard { width: 100%; background: var(--surface); border: 1px solid var(--purple-border); border-radius: 20px; padding: 20px 18px; text-align: center; margin-bottom: 14px; }
+.wcard { width: 100%; background: var(--surface); border: 1px solid var(--purple-border); border-radius: 20px; padding: 24px 18px; text-align: center; margin-bottom: 14px; }
 .wcat { font-size: 10px; color: var(--purple); letter-spacing: 0.1em; margin-bottom: 8px; }
-
-/* IMAGE in word card */
-.word-img-wrap { width: 90px; height: 90px; border-radius: 12px; overflow: hidden; margin: 0 auto 10px; background: var(--surface2); display: flex; align-items: center; justify-content: center; }
-.word-img-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
-.word-img-wrap .emoji-fallback { font-size: 48px; line-height: 1; }
-.word-img-wrap.hidden { display: none; }
-
-.wtxt { font-size: 30px; font-weight: 800; line-height: 1.1; }
-.retry-tag { font-size: 11px; color: var(--amber); margin-top: 8px; }
-
-/* HINT BOX */
-.hint-box { width: 100%; background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.3); border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; text-align: center; }
-.hint-box.hidden { display: none; }
-.hint-label { font-size: 9px; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 3px; }
-.hint-text { font-size: 14px; font-weight: 600; color: var(--amber); }
-
+.wtxt { font-size: 32px; font-weight: 800; line-height: 1.1; }
 .arow { display: flex; gap: 10px; width: 100%; }
-.arow .btn { flex: 1; padding: 13px 6px; flex-direction: column; gap: 3px; font-size: 14px; }
-.blbl { font-size: 10px; opacity: 0.7; font-weight: 400; }
-
-/* GUESSER */
+.arow .btn { flex: 1; font-size: 15px; }
 .gwrap2 { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; padding: 24px; text-align: center; }
 .gsub { font-size: 14px; color: var(--muted); margin-top: 14px; }
-.ghint-box { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.3); border-radius: 14px; padding: 14px 20px; margin-top: 20px; text-align: center; }
-.ghint-box.hidden { display: none; }
-.ghint-label { font-size: 9px; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 4px; }
-.ghint-text { font-size: 16px; font-weight: 700; color: var(--amber); }
-.gno-hint { font-size: 11px; color: var(--hint); margin-top: 24px; letter-spacing: 0.08em; }
+
+/* COUNTDOWN */
+.ccwrap { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; }
+.cctag { font-size: 11px; color: var(--hint); letter-spacing: 0.18em; text-transform: uppercase; }
+.ccname { font-size: 30px; font-weight: 800; background: linear-gradient(135deg, var(--text) 0%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; }
+.ccnum { font-size: 120px; font-weight: 800; color: var(--purple); line-height: 1; font-family: var(--mono); margin: 6px 0; }
+.ccsub { font-size: 13px; color: var(--muted); text-align: center; }
+
+/* REVEAL */
+.rvwrap { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 28px; width: 100%; max-width: 420px; }
+.rvtag { font-size: 11px; color: var(--red); letter-spacing: 0.18em; text-transform: uppercase; }
+.rvlabel { font-size: 13px; color: var(--muted); }
+.rvword { font-size: 42px; font-weight: 800; line-height: 1.1; text-align: center; }
+.rvsep { width: 40px; height: 1px; background: var(--border2); margin: 4px 0; }
+.rvnext { font-size: 13px; color: var(--muted); text-align: center; }
+.rvwait { font-size: 13px; color: var(--hint); text-align: center; letter-spacing: 0.05em; }
 
 /* SKIP OVERLAY */
 .sovl { position: fixed; inset: 0; z-index: 50; background: rgba(13,10,26,0.93); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; }
@@ -154,41 +138,29 @@ input[type="text"]:focus { border-color: var(--purple); }
 .mfield label { font-size: 10px; color: var(--hint); letter-spacing: 0.08em; display: block; margin-bottom: 5px; text-transform: uppercase; }
 .mfield input { font-family: var(--mono) !important; font-size: 13px !important; letter-spacing: 0.04em !important; text-align: left !important; text-transform: none !important; }
 .merr { font-size: 12px; color: var(--red); min-height: 16px; margin: 6px 0; }
-
 .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 0.5px solid var(--border2); border-radius: 12px; padding: 11px 20px; font-size: 13px; z-index: 100; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; }
 .toast.hidden { opacity: 0; }
-
-/* VERSION TAG */
 .vtag { position: fixed; top: 6px; left: 8px; font-size: 9px; color: var(--hint); font-family: var(--mono); letter-spacing: 0.1em; z-index: 150; pointer-events: none; opacity: 0.6; }
-
-/* COUNTDOWN */
-.ccwrap { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; }
-.cctag { font-size: 11px; color: var(--hint); letter-spacing: 0.18em; text-transform: uppercase; }
-.ccname { font-size: 30px; font-weight: 800; background: linear-gradient(135deg, var(--text) 0%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; }
-.ccnum { font-size: 120px; font-weight: 800; color: var(--purple); line-height: 1; font-family: var(--mono); margin: 6px 0; }
-.ccsub { font-size: 13px; color: var(--muted); text-align: center; }
 @keyframes fi { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 .fi { animation: fi 0.3s ease forwards; }
-@keyframes hint-in { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
-.hint-anim { animation: hint-in 0.4s ease forwards; }
 </style>
 </head>
 <body>
 <div id="app">
-  <div class="vtag">v1.1.0</div>
+  <div class="vtag">v1.2.0</div>
   <div class="glow g1"></div>
   <div class="glow g2"></div>
 
   <!-- CONFIG MODAL -->
   <div class="mwrap" id="cfgM">
     <div class="modal">
-      <div class="mtit">Configura Firebase 🔥</div>
+      <div class="mtit">Configura Firebase</div>
       <div class="msub">Proyecto Firebase gratuito para el multijugador.</div>
       <div class="msteps">
         1. <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a><br>
         2. Nuevo proyecto → Realtime Database → Crear<br>
         3. Modo prueba → Siguiente<br>
-        4. ⚙ Configuración → Agrega app web → copia los datos
+        4. Configuración → Agrega app web → copia los datos
       </div>
       <div class="mfield"><label>Database URL</label><input type="text" id="cfgUrl" placeholder="https://proyecto-rtdb.firebaseio.com"></div>
       <div class="mfield"><label>API Key</label><input type="text" id="cfgKey" placeholder="AIzaSy..."></div>
@@ -205,13 +177,13 @@ input[type="text"]:focus { border-color: var(--purple); }
     <div class="card">
       <span class="lbl">Tu nombre</span>
       <input type="text" class="name-in" id="pName" placeholder="¿Cómo te llamas?" maxlength="16" style="margin-bottom:18px;">
-      <button class="btn btn-p" onclick="createRoom()" style="margin-bottom:10px;">✦ Crear sala</button>
+      <button class="btn btn-p" onclick="createRoom()" style="margin-bottom:10px;">Crear sala</button>
       <div class="divider">o únete con un código</div>
       <span class="lbl">Código de sala</span>
       <input type="text" id="joinCode" placeholder="XXXX" maxlength="4">
       <button class="btn btn-s" onclick="joinRoom()">Entrar →</button>
     </div>
-    <button class="btn btn-ghost" onclick="showCfg()" style="margin-top:14px;">⚙ Firebase</button>
+    <button class="btn btn-ghost" onclick="showCfg()" style="margin-top:14px;">Firebase</button>
   </div>
 
   <!-- LOBBY -->
@@ -226,10 +198,13 @@ input[type="text"]:focus { border-color: var(--purple); }
       <div class="plist" id="pList"></div>
 
       <div id="hCtrl">
-        <div class="sec" style="margin-top:12px;">⚙ Configuración</div>
+        <div class="sec" style="margin-top:12px;">Configuración</div>
         <div class="settings-block">
           <div class="lbl">Duración del turno</div>
-          <div class="time-grid" id="timeGrid"></div>
+          <div class="sel-grid" id="timeGrid"></div>
+
+          <div class="lbl" style="margin-top:14px;">Palabras por ronda</div>
+          <div class="sel-grid" id="wordsGrid"></div>
 
           <div class="lbl" style="margin-top:14px;">Tipo de palabras</div>
           <div class="type-grid" id="typeGrid"></div>
@@ -239,7 +214,7 @@ input[type="text"]:focus { border-color: var(--purple); }
             <div class="cat-grid" id="catGrid"></div>
           </div>
         </div>
-        <button class="btn btn-p" onclick="startGame()">▶ Empezar partida</button>
+        <button class="btn btn-p" onclick="startGame()">Empezar partida</button>
       </div>
       <div id="gWait" class="hidden" style="text-align:center;padding:24px;color:var(--muted);font-size:14px;">
         Esperando a que el host empiece...
@@ -247,13 +222,26 @@ input[type="text"]:focus { border-color: var(--purple); }
     </div>
   </div>
 
-  <!-- COUNTDOWN (before each turn) -->
+  <!-- COUNTDOWN -->
   <div class="screen hidden" id="sCount">
     <div class="ccwrap fi">
       <div class="cctag" id="ccTag">Siguiente turno</div>
       <div class="ccname" id="ccName">—</div>
       <div class="ccnum" id="ccNum">5</div>
       <div class="ccsub" id="ccSub">Prepárate...</div>
+    </div>
+  </div>
+
+  <!-- REVEAL (word shown after timeout) -->
+  <div class="screen hidden" id="sReveal">
+    <div class="rvwrap fi">
+      <div class="rvtag">Tiempo agotado</div>
+      <div class="rvlabel">La palabra era...</div>
+      <div class="rvword" id="rvWord">—</div>
+      <div class="rvsep"></div>
+      <div class="rvnext" id="rvNext">Siguiente: <strong>—</strong></div>
+      <button class="btn btn-p hidden" id="rvBtn" onclick="startNextTurn()" style="margin-top:6px;max-width:280px;">Empezar mi turno →</button>
+      <div class="rvwait hidden" id="rvWait">Esperando a que empiece...</div>
     </div>
   </div>
 
@@ -268,15 +256,10 @@ input[type="text"]:focus { border-color: var(--purple); }
         <div class="tnum" id="gNum">60</div>
       </div>
       <div class="gsub">¡Escucha las pistas de tus amigos!</div>
-      <div class="ghint-box hidden" id="gHintBox">
-        <div class="ghint-label">💡 PISTA</div>
-        <div class="ghint-text" id="gHintText">—</div>
-      </div>
-      <div class="gno-hint" id="gNoHint">— sin pistas todavía —</div>
     </div>
   </div>
 
-  <!-- CLUES (everyone else) -->
+  <!-- CLUES (everyone except guesser) -->
   <div class="screen hidden" id="sClues">
     <div class="gwrap fi" style="margin-top:10px;">
       <div class="ttag" id="tTag">Turno de...</div>
@@ -288,21 +271,12 @@ input[type="text"]:focus { border-color: var(--purple); }
         <div class="tnum" id="cNum">60</div>
       </div>
       <div class="wcard">
-        <div class="wcat" id="wCat">FAMOSOS</div>
-        <div class="word-img-wrap hidden" id="wordImgWrap">
-          <img id="wordImg" src="" alt="" onerror="this.parentElement.querySelector('.emoji-fallback').style.display='block';this.style.display='none';">
-          <span class="emoji-fallback" style="display:none" id="wordEmoji"></span>
-        </div>
+        <div class="wcat" id="wCat"></div>
         <div class="wtxt" id="wTxt">—</div>
-        <div class="retry-tag hidden" id="retryTag">🔄 Segunda oportunidad</div>
-      </div>
-      <div class="hint-box hidden" id="cHintBox">
-        <div class="hint-label">💡 PISTA AUTOMÁTICA</div>
-        <div class="hint-text" id="cHintText">—</div>
       </div>
       <div class="arow">
-        <button class="btn btn-g" onclick="markCorrect()">✓<span class="blbl">acertó</span></button>
-        <button class="btn btn-s" onclick="reqSkip()">⏭<span class="blbl">skip</span></button>
+        <button class="btn btn-g" onclick="markCorrect()">Acertó</button>
+        <button class="btn btn-s" id="skipBtn" onclick="reqSkip()" style="display:none;">Skip</button>
       </div>
     </div>
   </div>
@@ -316,18 +290,18 @@ input[type="text"]:focus { border-color: var(--purple); }
       <div class="rbox">
         <div class="rhint">¿Todos listos para la siguiente ronda?</div>
         <div class="rchips" id="rChips"></div>
-        <button class="btn btn-p" id="readyBtn" onclick="voteReady()">Estoy listo ✓</button>
+        <button class="btn btn-p" id="readyBtn" onclick="voteReady()">Estoy listo</button>
       </div>
     </div>
   </div>
 
   <!-- SKIP OVERLAY -->
   <div class="sovl hidden" id="sOvl">
-    <div class="stit">¿Skip? ⏭</div>
-    <div class="ssub" id="sSub">Todos deben aprobar</div>
+    <div class="stit">Skip</div>
+    <div class="ssub" id="sSub">Unanimidad requerida</div>
     <div class="sbtns" id="sBtns">
-      <button class="btn btn-g" id="aprvBtn" onclick="voteSkip(true)">✓ Aprobar</button>
-      <button class="btn btn-r" id="denyBtn" onclick="voteSkip(false)">✗ Denegar</button>
+      <button class="btn btn-g" id="aprvBtn" onclick="voteSkip(true)">Aprobar</button>
+      <button class="btn btn-r" id="denyBtn" onclick="voteSkip(false)">Denegar</button>
     </div>
     <div class="vchips" id="vChips"></div>
   </div>
@@ -344,208 +318,111 @@ import { getDatabase, ref, set, get, onValue, update } from 'https://www.gstatic
 ═══════════════════════════════════════════════ */
 const COLORS = ['#8b7cf8','#4ade80','#fb923c','#f87171','#38bdf8','#e879f9','#fbbf24','#a3e635'];
 
-// Each entry: [word, emoji, searchQuery]
 const WORDS = {
+  // PERSONAS — únicamente personas reales o históricas
   famosos: [
-    ['Madonna','👑','Madonna singer'],['Shakira','💃','Shakira singer'],['Beyoncé','🎤','Beyonce singer'],
-    ['Taylor Swift','🎸','Taylor Swift singer'],['Rihanna','💋','Rihanna singer'],['Adele','🎵','Adele singer'],
-    ['Lady Gaga','🎭','Lady Gaga singer'],['Ariana Grande','🐱','Ariana Grande singer'],
-    ['Billie Eilish','🖤','Billie Eilish'],['Dua Lipa','💫','Dua Lipa'],
-    ['Ed Sheeran','🎸','Ed Sheeran'],['Justin Bieber','🎤','Justin Bieber'],
-    ['Drake','🦉','Drake rapper'],['Eminem','🎤','Eminem rapper'],['Kanye West','🎤','Kanye West'],
-    ['Bruno Mars','🎤','Bruno Mars singer'],['The Weeknd','🌙','The Weeknd singer'],
-    ['Harry Styles','🌈','Harry Styles'],['Miley Cyrus','🎤','Miley Cyrus'],['Selena Gomez','🌹','Selena Gomez'],
-    ['Michael Jackson','🕺','Michael Jackson'],['Elvis Presley','🎸','Elvis Presley'],
-    ['David Bowie','⚡','David Bowie'],['Freddie Mercury','👑','Freddie Mercury'],['John Lennon','🕊️','John Lennon'],
-    ['Mick Jagger','🎤','Mick Jagger'],['Prince','💜','Prince musician'],['Elton John','🎹','Elton John'],
-    ['Bob Dylan','🎸','Bob Dylan'],['Penélope Cruz','🌟','Penelope Cruz actress'],
-    ['Javier Bardem','🎬','Javier Bardem actor'],['Antonio Banderas','🥷','Antonio Banderas'],
-    ['Alejandro Sanz','🎸','Alejandro Sanz'],['Enrique Iglesias','🎤','Enrique Iglesias'],
-    ['Ricky Martin','🎤','Ricky Martin'],['Bad Bunny','🐰','Bad Bunny'],['J Balvin','🌈','J Balvin'],
-    ['Rosalía','💃','Rosalia singer'],['C. Tangana','🎤','C Tangana'],['Pablo Alborán','🎹','Pablo Alboran'],
-    ['Aitana','🌟','Aitana singer'],['Karol G','🦋','Karol G'],
-    ['Cristiano Ronaldo','⚽','Cristiano Ronaldo'],['Lionel Messi','🐐','Lionel Messi'],
-    ['Neymar','⚽','Neymar'],['Kylian Mbappé','⚡','Mbappe'],['Erling Haaland','⚽','Haaland'],
-    ['LeBron James','🏀','LeBron James'],['Michael Jordan','🏀','Michael Jordan'],
-    ['Serena Williams','🎾','Serena Williams'],['Rafael Nadal','🎾','Rafael Nadal'],
-    ['Carlos Alcaraz','🎾','Carlos Alcaraz'],['Roger Federer','🎾','Roger Federer'],
-    ['Usain Bolt','⚡','Usain Bolt'],['Simone Biles','🤸','Simone Biles'],
-    ['Albert Einstein','🧠','Albert Einstein'],['Pablo Picasso','🎨','Pablo Picasso'],
-    ['Salvador Dalí','🎨','Salvador Dali'],['Frida Kahlo','🌺','Frida Kahlo'],
-    ['Elon Musk','🚀','Elon Musk'],['Bill Gates','💻','Bill Gates'],
-    ['Steve Jobs','🍎','Steve Jobs'],['Mark Zuckerberg','📱','Mark Zuckerberg'],
-    ['Barack Obama','🇺🇸','Barack Obama'],['Marilyn Monroe','💄','Marilyn Monroe'],
-    ['Leonardo DiCaprio','🎬','Leonardo DiCaprio'],['Brad Pitt','🎬','Brad Pitt'],
-    ['Scarlett Johansson','🎬','Scarlett Johansson'],['Jennifer Lopez','💃','Jennifer Lopez'],
-    ['Will Smith','🎬','Will Smith actor'],['Tom Hanks','🎬','Tom Hanks'],
-    ['Ana de Armas','🎬','Ana de Armas'],['Pedro Pascal','🎬','Pedro Pascal'],
-    ['Zendaya','🌟','Zendaya'],['Jenna Ortega','🖤','Jenna Ortega'],
-    ['Pep Guardiola','⚽','Pep Guardiola'],['Andrés Iniesta','⚽','Andres Iniesta'],
-    ['Sara Carbonero','📺','Sara Carbonero'],['Nicki Minaj','💅','Nicki Minaj'],
-    ['Cardi B','💅','Cardi B'],['Post Malone','🎤','Post Malone'],['Doja Cat','🐱','Doja Cat'],
+    'Madonna','Shakira','Beyoncé','Taylor Swift','Rihanna','Adele',
+    'Lady Gaga','Ariana Grande','Billie Eilish','Dua Lipa',
+    'Ed Sheeran','Justin Bieber','Drake','Eminem','Kanye West',
+    'Bruno Mars','The Weeknd','Harry Styles','Miley Cyrus','Selena Gomez',
+    'Michael Jackson','Elvis Presley','David Bowie','Freddie Mercury','John Lennon',
+    'Mick Jagger','Prince','Elton John','Bob Dylan','Penélope Cruz',
+    'Javier Bardem','Antonio Banderas','Alejandro Sanz','Enrique Iglesias',
+    'Ricky Martin','Bad Bunny','J Balvin','Rosalía','C. Tangana','Pablo Alborán',
+    'Aitana','Karol G','Cristiano Ronaldo','Lionel Messi','Neymar',
+    'Kylian Mbappé','Erling Haaland','LeBron James','Michael Jordan',
+    'Serena Williams','Rafael Nadal','Carlos Alcaraz','Roger Federer',
+    'Usain Bolt','Simone Biles','Albert Einstein','Pablo Picasso',
+    'Salvador Dalí','Frida Kahlo','Elon Musk','Bill Gates',
+    'Steve Jobs','Mark Zuckerberg','Barack Obama','Marilyn Monroe',
+    'Leonardo DiCaprio','Brad Pitt','Scarlett Johansson','Jennifer Lopez',
+    'Will Smith','Tom Hanks','Ana de Armas','Pedro Pascal',
+    'Zendaya','Jenna Ortega','Pep Guardiola','Andrés Iniesta',
+    'Sara Carbonero','Nicki Minaj','Cardi B','Post Malone','Doja Cat',
+    'Napoleón Bonaparte','Cleopatra','Nelson Mandela','Martin Luther King',
+    'Mahatma Gandhi','Marie Curie','Isaac Newton','Leonardo da Vinci',
+    'Miguel Ángel','Mozart','Beethoven','Shakespeare',
   ],
+  // COSAS — películas, series, géneros musicales, objetos, comida, animales, lugares
   peliculas: [
-    ['El Rey León','🦁','Lion King movie'],['Titanic','🚢','Titanic movie'],
-    ['Avatar','💙','Avatar movie'],['Star Wars','⚔️','Star Wars'],['Jurassic Park','🦕','Jurassic Park'],
-    ['El Padrino','🌹','Godfather movie'],['Forrest Gump','🏃','Forrest Gump'],
-    ['La La Land','🎭','La La Land movie'],['Pulp Fiction','💼','Pulp Fiction'],['Matrix','💊','Matrix movie'],
-    ['El Señor de los Anillos','💍','Lord of the Rings'],['Harry Potter','⚡','Harry Potter'],
-    ['Los Vengadores','🦸','Avengers movie'],['Batman','🦇','Batman'],['Spider-Man','🕷️','Spider-Man'],
-    ['Frozen','❄️','Frozen movie'],['Toy Story','🤠','Toy Story'],['Shrek','🧅','Shrek movie'],
-    ['Buscando a Nemo','🐠','Finding Nemo'],['Coco','💀','Coco Pixar movie'],
-    ['Interstellar','🚀','Interstellar movie'],['Inception','🌀','Inception movie'],
-    ['El Caballero Oscuro','🦇','Dark Knight'],['Iron Man','🤖','Iron Man'],['Deadpool','🗡️','Deadpool'],
-    ['Joker','🃏','Joker movie'],['Parasite','🏠','Parasite movie'],
-    ['Oppenheimer','💣','Oppenheimer movie'],['Barbie','👱','Barbie movie 2023'],
-    ['Gladiator','⚔️','Gladiator movie'],['Indiana Jones','🎩','Indiana Jones'],
-    ['Rocky','🥊','Rocky movie'],['Grease','🎤','Grease movie'],['Top Gun','✈️','Top Gun movie'],
-    ['Fast and Furious','🚗','Fast and Furious'],['Dune','🏜️','Dune movie'],
+    'El Rey León','Titanic','Avatar','Star Wars','Jurassic Park',
+    'El Padrino','Forrest Gump','La La Land','Pulp Fiction','Matrix',
+    'El Señor de los Anillos','Harry Potter','Los Vengadores','Batman','Spider-Man',
+    'Frozen','Toy Story','Shrek','Buscando a Nemo','Coco',
+    'Interstellar','Inception','El Caballero Oscuro','Iron Man','Deadpool',
+    'Joker','Parasite','Oppenheimer','Barbie','Gladiator',
+    'Indiana Jones','Rocky','Grease','Top Gun','Fast and Furious','Dune',
   ],
   series: [
-    ['Breaking Bad','🧪','Breaking Bad'],['Game of Thrones','👑','Game of Thrones'],
-    ['Friends','☕','Friends TV show'],['The Office','💼','The Office TV'],['Stranger Things','🔦','Stranger Things'],
-    ['La Casa de Papel','💰','Money Heist'],['El Juego del Calamar','🦑','Squid Game'],
-    ['Narcos','🌿','Narcos TV'],['Dark','🌑','Dark Netflix'],['Peaky Blinders','🎩','Peaky Blinders'],
-    ['The Crown','👑','The Crown Netflix'],['Grey\'s Anatomy','🏥','Grey\'s Anatomy'],
-    ['Los Simpson','🍩','The Simpsons'],['Black Mirror','📱','Black Mirror'],
-    ['Lost','✈️','Lost TV show'],['Prison Break','🔐','Prison Break'],
-    ['The Sopranos','🤌','The Sopranos'],['Dexter','🩸','Dexter TV'],
-    ['Bridgerton','🌹','Bridgerton'],['Emily in Paris','🗼','Emily in Paris'],
-    ['Succession','💼','Succession HBO'],['Euphoria','💊','Euphoria HBO'],
-    ['The Last of Us','🍄','The Last of Us'],['Wednesday','🖤','Wednesday Netflix'],
-    ['Ted Lasso','⚽','Ted Lasso'],['Élite','📚','Elite Netflix Spain'],
-    ['Vis a Vis','🔒','Vis a Vis'],['Two and a Half Men','😂','Two and a Half Men'],
-    ['South Park','🍔','South Park'],['Ozark','💰','Ozark Netflix'],
+    'Breaking Bad','Game of Thrones','Friends','The Office','Stranger Things',
+    'La Casa de Papel','El Juego del Calamar','Narcos','Dark','Peaky Blinders',
+    'The Crown','Grey\'s Anatomy','Los Simpson','Black Mirror',
+    'Lost','Prison Break','The Sopranos','Dexter',
+    'Bridgerton','Emily in Paris','Succession','Euphoria',
+    'The Last of Us','Wednesday','Ted Lasso','Élite',
+    'Vis a Vis','Two and a Half Men','South Park','Ozark',
   ],
   musica: [
-    ['Rock','🤘','rock music concert'],['Pop','🎤','pop music concert'],['Reggaeton','💃','reggaeton'],
-    ['Jazz','🎷','jazz music'],['Blues','🎸','blues music'],['Hip-hop','🎤','hip hop'],
-    ['Heavy metal','🤘','heavy metal concert'],['Flamenco','💃','flamenco dance'],
-    ['Salsa','🕺','salsa dance'],['Tango','🌹','tango dance'],['Opera','🎭','opera singer'],
-    ['K-pop','💜','kpop concert'],['Reggae','🌿','reggae music'],['Trap','🎤','trap music'],
-    ['Coachella','🎪','Coachella festival'],['Grammy','🏆','Grammy Awards'],['Eurovision','🇪🇺','Eurovision'],
-    ['Woodstock','🕊️','Woodstock festival'],['DJ','🎧','DJ performance'],
-    ['Disco','🪩','disco music 70s'],['Funk','🕺','funk music'],['Soul','🎤','soul music'],
+    'Rock','Pop','Reggaeton','Jazz','Blues','Hip-hop',
+    'Heavy metal','Flamenco','Salsa','Tango','Ópera',
+    'K-pop','Reggae','Trap','Disco','Funk','Soul',
+    'Bachata','Cumbia','Punk','Country','Electrónica','Clásica',
   ],
-  // COSAS
   objetos: [
-    ['Silla','🪑','wooden chair'],['Nevera','❄️','refrigerator'],['Televisión','📺','television'],
-    ['Teléfono','📱','smartphone'],['Ordenador','💻','laptop computer'],['Mesa','🪵','wooden table'],
-    ['Cama','🛏️','bed bedroom'],['Espejo','🪞','mirror'],['Reloj','⌚','watch clock'],
-    ['Lámpara','💡','lamp light'],['Paraguas','☂️','umbrella'],['Maleta','🧳','suitcase'],
-    ['Tijeras','✂️','scissors'],['Llave','🔑','key'],['Libro','📚','book'],
-    ['Bicicleta','🚲','bicycle'],['Moto','🏍️','motorcycle'],['Coche','🚗','car'],
-    ['Avión','✈️','airplane'],['Barco','🚢','ship boat'],['Globo aerostático','🎈','hot air balloon'],
-    ['Guitarra','🎸','guitar'],['Piano','🎹','piano'],['Batería','🥁','drum kit'],
-    ['Pelota','⚽','ball sport'],['Raqueta','🎾','tennis racket'],['Dado','🎲','dice'],
+    'Silla','Nevera','Televisión','Teléfono','Ordenador','Mesa',
+    'Cama','Espejo','Reloj','Lámpara','Paraguas','Maleta',
+    'Tijeras','Llave','Libro','Bicicleta','Moto','Coche',
+    'Avión','Barco','Globo aerostático','Guitarra','Piano','Batería',
+    'Pelota','Raqueta','Dado','Telescopio','Microscopio','Linterna',
   ],
   comida: [
-    ['Pizza','🍕','pizza'],['Sushi','🍣','sushi'],['Hamburguesa','🍔','hamburger'],
-    ['Paella','🥘','paella'],['Tortilla española','🍳','Spanish omelette tortilla'],
-    ['Croissant','🥐','croissant'],['Taco','🌮','taco'],['Ramen','🍜','ramen'],
-    ['Helado','🍦','ice cream'],['Tarta de queso','🍰','cheesecake'],
-    ['Chocolate','🍫','chocolate bar'],['Cerveza','🍺','beer'],['Vino','🍷','wine glass'],
-    ['Café','☕','coffee cup'],['Champán','🥂','champagne'],
-    ['Pulpo','🐙','octopus food'],['Jamón','🥩','Spanish ham jamon'],
-    ['Churros','🍩','churros'],['Gazpacho','🍅','gazpacho'],['Croquetas','🍘','croquettes'],
-    ['Macarrones','🍝','pasta macaroni'],['Donut','🍩','donut'],['Cupcake','🧁','cupcake'],
-    ['Aguacate','🥑','avocado'],['Sandía','🍉','watermelon'],['Piña','🍍','pineapple'],
+    'Pizza','Sushi','Hamburguesa','Paella','Tortilla española',
+    'Croissant','Taco','Ramen','Helado','Tarta de queso',
+    'Chocolate','Cerveza','Vino','Café','Champán',
+    'Pulpo','Jamón','Churros','Gazpacho','Croquetas',
+    'Macarrones','Donut','Cupcake','Aguacate','Sandía','Piña',
   ],
   animales: [
-    ['Perro','🐕','dog'],['Gato','🐈','cat'],['León','🦁','lion'],['Elefante','🐘','elephant'],
-    ['Jirafa','🦒','giraffe'],['Delfín','🐬','dolphin'],['Ballena','🐋','whale'],
-    ['Tiburón','🦈','shark'],['Pingüino','🐧','penguin'],['Koala','🐨','koala'],
-    ['Canguro','🦘','kangaroo'],['Panda','🐼','panda'],['Gorila','🦍','gorilla'],
-    ['Cocodrilo','🐊','crocodile'],['Serpiente','🐍','snake'],['Águila','🦅','eagle'],
-    ['Flamenco','🦩','flamingo'],['Pulpo','🐙','octopus'],['Medusa','🪼','jellyfish'],
-    ['Mariposa','🦋','butterfly'],['Abeja','🐝','bee'],['Oso polar','🐻‍❄️','polar bear'],
-    ['Tigre','🐯','tiger'],['Lobo','🐺','wolf'],['Zorro','🦊','fox'],['Loro','🦜','parrot'],
+    'Perro','Gato','León','Elefante','Jirafa','Delfín','Ballena',
+    'Tiburón','Pingüino','Koala','Canguro','Panda','Gorila',
+    'Cocodrilo','Serpiente','Águila','Flamenco','Pulpo','Medusa',
+    'Mariposa','Abeja','Oso polar','Tigre','Lobo','Zorro','Loro',
   ],
   lugares: [
-    ['Torre Eiffel','🗼','Eiffel Tower Paris'],['Coliseo Romano','🏟️','Colosseum Rome'],
-    ['Machu Picchu','🏔️','Machu Picchu'],['Gran Muralla China','🧱','Great Wall China'],
-    ['Taj Mahal','🕌','Taj Mahal India'],['Pirámides de Egipto','🏺','Pyramids Egypt Giza'],
-    ['Estatua de la Libertad','🗽','Statue of Liberty'],['Big Ben','🕰️','Big Ben London'],
-    ['Sagrada Familia','⛪','Sagrada Familia Barcelona'],['Alhambra','🏰','Alhambra Granada'],
-    ['Times Square','🌆','Times Square New York'],['Sydney Opera House','🎭','Sydney Opera House'],
-    ['Stonehenge','🪨','Stonehenge'],['Angkor Wat','🛕','Angkor Wat'],
-    ['Monte Fuji','🗻','Mount Fuji Japan'],['Cataratas del Niágara','💧','Niagara Falls'],
-    ['Aurora Boreal','🌌','Aurora Borealis Northern Lights'],
-    ['Desierto del Sahara','🏜️','Sahara Desert'],['Amazonia','🌿','Amazon rainforest'],
-    ['La Habana','🇨🇺','Havana Cuba'],['Tokio','🗾','Tokyo Japan'],['Nueva York','🌆','New York City'],
-    ['París','🗼','Paris France'],['Roma','🏛️','Rome Italy'],['Barcelona','🏖️','Barcelona Spain'],
+    'Torre Eiffel','Coliseo Romano','Machu Picchu','Gran Muralla China',
+    'Taj Mahal','Pirámides de Egipto','Estatua de la Libertad','Big Ben',
+    'Sagrada Familia','Alhambra','Times Square','Sydney Opera House',
+    'Stonehenge','Monte Fuji','Cataratas del Niágara','Aurora Boreal',
+    'Desierto del Sahara','Amazonia','La Habana','Tokio',
+    'Nueva York','París','Roma','Barcelona','Dubai','Londres',
   ],
 };
 
 const CAT_META = {
-  famosos:  { name:'Famosos',   icon:'⭐', type:'personas' },
-  peliculas:{ name:'Películas', icon:'🎬', type:'personas' },
-  series:   { name:'Series',    icon:'📺', type:'personas' },
-  musica:   { name:'Música',    icon:'🎵', type:'personas' },
-  objetos:  { name:'Objetos',   icon:'🪑', type:'cosas' },
-  comida:   { name:'Comida',    icon:'🍕', type:'cosas' },
-  animales: { name:'Animales',  icon:'🐾', type:'cosas' },
-  lugares:  { name:'Lugares',   icon:'🗺️', type:'cosas' },
+  famosos:  { name:'Famosos',   type:'personas' },
+  peliculas:{ name:'Películas', type:'cosas' },
+  series:   { name:'Series',    type:'cosas' },
+  musica:   { name:'Música',    type:'cosas' },
+  objetos:  { name:'Objetos',   type:'cosas' },
+  comida:   { name:'Comida',    type:'cosas' },
+  animales: { name:'Animales',  type:'cosas' },
+  lugares:  { name:'Lugares',   type:'cosas' },
 };
 
-const HINTS = {
-  'Madonna':['Reina del pop','Like a Virgin','Material Girl'],
-  'Shakira':['Colombiana','Sus caderas no mienten','Waka Waka'],
-  'Beyoncé':['Destiny\'s Child','Single Ladies','Lemonade'],
-  'Taylor Swift':['Eras Tour','Escribió sobre sus ex','Shake It Off'],
-  'Rihanna':['Barbados','Umbrella','Fenty Beauty'],
-  'Adele':['Hello','Voz muy poderosa','Cantante británica'],
-  'Lady Gaga':['Poker Face','Born This Way','Vestuarios locos'],
-  'Ariana Grande':['Cola de caballo','Thank U Next','Pete Davidson'],
-  'Billie Eilish':['Bad Guy','Hermano Finneas','Voz muy suave'],
-  'Dua Lipa':['Levitating','Future Nostalgia','albanesa-británica'],
-  'Ed Sheeran':['Shape of You','Pelirrojo','Cantautor'],
-  'Justin Bieber':['Baby Baby','Canadiense','Hailey Baldwin'],
-  'Drake':['Canadiense','God\'s Plan','Started From The Bottom'],
-  'Eminem':['Slim Shady','Lose Yourself','Detroit'],
-  'Michael Jackson':['Moonwalk','Thriller','Rey del pop'],
-  'Elvis Presley':['El Rey','Pelvis','Las Vegas'],
-  'Freddie Mercury':['Queen','Bohemian Rhapsody','We Are The Champions'],
-  'Cristiano Ronaldo':['CR7','Portugal','Siuu'],
-  'Lionel Messi':['La Pulga','Argentina','10'],
-  'LeBron James':['King James','Lakers','NBA'],
-  'Rafael Nadal':['Rafa','Mallorca','Rey de tierra batida'],
-  'Carlos Alcaraz':['El Carlitos','Murcia','Wimbledon joven'],
-  'Albert Einstein':['E=mc²','Relatividad','Físico alemán'],
-  'Pablo Picasso':['Guernica','Cubismo','Málaga'],
-  'Salvador Dalí':['Bigote','Relojes blandos','Surrealismo'],
-  'Frida Kahlo':['Ceja única','Pintora mexicana','Autorretratos'],
-  'Elon Musk':['Tesla','SpaceX','Compró Twitter'],
-  'Leonardo DiCaprio':['Titanic','Óscar tardío','Ambiental'],
-  // Cosas
-  'Pizza':['Italiana','Queso y tomate','Redonda'],
-  'Sushi':['Japonés','Arroz y pescado','Palillos'],
-  'Hamburguesa':['Pan y carne','Fast food','Con ketchup'],
-  'Paella':['Valenciana','Arroz','Con mariscos'],
-  'León':['Rey de la selva','Melena','África'],
-  'Elefante':['Más grande de tierra','Trompa larga','África e India'],
-  'Torre Eiffel':['París','Metal','1889'],
-  'Coliseo Romano':['Roma','Gladiadores','Anfiteatro'],
-  'Sagrada Familia':['Barcelona','Gaudí','En construcción'],
-  'default':['Famoso mundialmente','Piensa en su profesión','Muy conocido']
-};
+// Lookup: word → category name (for display in word card)
+const WORD_CAT = {};
+Object.entries(WORDS).forEach(([cat,ws])=>ws.forEach(w=>{WORD_CAT[w]=cat;}));
 
 /* ═══════════════════════════════════════════════
    STATE
 ═══════════════════════════════════════════════ */
 let db, roomRef, myId, myName, roomCode, isHost=false, gs={};
-// Single timer — ONLY ONE interval ever runs
-let timerIv = null;
-let lastTimerKey = null; // tracks which game state the timer belongs to
-// Countdown timer (5s before each turn) — separate interval
-let cdIv = null;
-let cdKey = null;
-const CD_SECS = 5;
+let timerIv=null, lastTimerKey=null;
+let cdIv=null, cdKey=null;
+const CD_SECS=5;
 
-let selType = 'personas'; // 'personas' | 'cosas' | 'ambas'
-let selCats = new Set(['famosos']);
-let selTime = 60;
-let votedReady = false;
+let selType='personas', selCats=new Set(['famosos']), selTime=60, selWords=0;
+let votedReady=false;
 
 /* ═══════════════════════════════════════════════
    UTILS
@@ -557,7 +434,7 @@ function col(i){return COLORS[i%COLORS.length];}
 function ini(n){return(n||'?').substring(0,2).toUpperCase();}
 function ss(id){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
 function toast(m,d=2500){const t=document.getElementById('tst');t.textContent=m;t.classList.remove('hidden');clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.add('hidden'),d);}
-function getHint(word,idx){const h=HINTS[word]||HINTS['default'];return h[idx%h.length];}
+function limitReached(nextIdx,s){const lim=s.wordsLimit||0;return nextIdx>=(s.words||[]).length||(lim>0&&nextIdx>=lim);}
 
 /* ═══════════════════════════════════════════════
    FIREBASE
@@ -574,10 +451,10 @@ window.initFB = async function(){
     db=getDatabase(app);
     localStorage.setItem('hu_cfg',JSON.stringify({url,key,pid}));
     document.getElementById('cfgM').classList.add('hidden');
-    err.textContent='';toast('Firebase conectado ✓');
+    err.textContent='';toast('Firebase conectado');
   }catch(e){err.textContent='Error: '+e.message;}
 };
-window.showCfg = ()=>document.getElementById('cfgM').classList.remove('hidden');
+window.showCfg=()=>document.getElementById('cfgM').classList.remove('hidden');
 (function autoConnect(){
   const s=localStorage.getItem('hu_cfg');if(!s)return;
   try{
@@ -595,56 +472,53 @@ window.showCfg = ()=>document.getElementById('cfgM').classList.remove('hidden');
 function buildTimeGrid(){
   const g=document.getElementById('timeGrid');g.innerHTML='';
   [{v:30,l:'30s'},{v:60,l:'60s'},{v:90,l:'90s'},{v:120,l:'2min'},{v:180,l:'3min'}].forEach(o=>{
-    const d=document.createElement('div');d.className='time-btn'+(o.v===selTime?' sel':'');
+    const d=document.createElement('div');d.className='sel-btn'+(o.v===selTime?' on':'');
     d.textContent=o.l;
-    d.onclick=()=>{selTime=o.v;document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('sel'));d.classList.add('sel');};
+    d.onclick=()=>{selTime=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');};
+    g.appendChild(d);
+  });
+}
+
+function buildWordsGrid(){
+  const g=document.getElementById('wordsGrid');g.innerHTML='';
+  [{v:0,l:'∞'},{v:5,l:'5'},{v:10,l:'10'},{v:15,l:'15'},{v:20,l:'20'}].forEach(o=>{
+    const d=document.createElement('div');d.className='sel-btn'+(o.v===selWords?' on':'');
+    d.textContent=o.l;
+    d.onclick=()=>{selWords=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');};
     g.appendChild(d);
   });
 }
 
 function buildTypeGrid(){
   const g=document.getElementById('typeGrid');g.innerHTML='';
-  [{v:'personas',l:'Personas',i:'🧑'},{v:'cosas',l:'Cosas',i:'📦'},{v:'ambas',l:'Ambas',i:'🎯'}].forEach(o=>{
-    const d=document.createElement('div');d.className='type-btn'+(o.v===selType?' sel':'');
-    d.innerHTML=`<span class="ticon">${o.i}</span>${o.l}`;
+  [{v:'personas',l:'Personas'},{v:'cosas',l:'Cosas'},{v:'ambas',l:'Ambas'}].forEach(o=>{
+    const d=document.createElement('div');d.className='type-btn'+(o.v===selType?' on':'');
+    d.textContent=o.l;
     d.onclick=()=>{selType=o.v;buildTypeGrid();rebuildCats();};
     g.appendChild(d);
   });
 }
 
 function rebuildCats(){
-  // filter cats by type
-  const valid=Object.entries(CAT_META)
-    .filter(([,m])=>selType==='ambas'||m.type===selType)
-    .map(([k])=>k);
-  // keep only valid selCats
+  const valid=Object.entries(CAT_META).filter(([,m])=>selType==='ambas'||m.type===selType).map(([k])=>k);
   selCats=new Set([...selCats].filter(k=>valid.includes(k)));
-  if(selCats.size===0) selCats=new Set([valid[0]]);
+  if(selCats.size===0)selCats=new Set([valid[0]]);
   buildCatGrid(valid);
 }
 
 function buildCatGrid(validKeys){
   const keys=validKeys||Object.keys(CAT_META).filter(k=>selType==='ambas'||CAT_META[k].type===selType);
   const g=document.getElementById('catGrid');g.innerHTML='';
-
-  // All button
-  const all=document.createElement('div');all.className='cbt all-btn'+(selCats.size===keys.length?' sel':'');
-  all.innerHTML=`<div class="ci">✅</div><div class="cn">Todas</div>`;
-  all.onclick=()=>{
-    if(selCats.size===keys.length)selCats=new Set([keys[0]]);
-    else selCats=new Set(keys);
-    buildCatGrid(keys);
-  };
+  const all=document.createElement('div');
+  all.className='cbt all-btn'+(selCats.size===keys.length?' on':'');
+  all.innerHTML=`<div class="cn">Todas</div>`;
+  all.onclick=()=>{selCats=(selCats.size===keys.length)?new Set([keys[0]]):new Set(keys);buildCatGrid(keys);};
   g.appendChild(all);
-
   keys.forEach(k=>{
     const m=CAT_META[k];const d=document.createElement('div');
-    d.className='cbt'+(selCats.has(k)?' sel':'');
-    d.innerHTML=`<div class="ci">${m.icon}</div><div class="cn">${m.name}</div><div class="cc">${WORDS[k].length} palabras</div>`;
-    d.onclick=()=>{
-      if(selCats.has(k)){if(selCats.size>1)selCats.delete(k);}else selCats.add(k);
-      buildCatGrid(keys);
-    };
+    d.className='cbt'+(selCats.has(k)?' on':'');
+    d.innerHTML=`<div class="cn">${m.name}</div><div class="cc">${WORDS[k].length} palabras</div>`;
+    d.onclick=()=>{if(selCats.has(k)){if(selCats.size>1)selCats.delete(k);}else selCats.add(k);buildCatGrid(keys);};
     g.appendChild(d);
   });
 }
@@ -657,9 +531,9 @@ window.createRoom = async function(){
   myName=document.getElementById('pName').value.trim()||'Jugador';
   myId=gi();roomCode=gc();isHost=true;
   roomRef=ref(db,'rooms/'+roomCode);
-  await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,words:[],wordIdx:0,scores:{},roundTime:60,retryWord:null,players:{[myId]:{name:myName,color:0,t:Date.now()}}});
+  await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,words:[],wordIdx:0,scores:{},roundTime:60,wordsLimit:0,players:{[myId]:{name:myName,color:0,t:Date.now()}}});
   document.getElementById('dCode').textContent=roomCode;
-  buildTimeGrid();buildTypeGrid();rebuildCats();
+  buildTimeGrid();buildWordsGrid();buildTypeGrid();rebuildCats();
   document.getElementById('hCtrl').classList.remove('hidden');
   document.getElementById('gWait').classList.add('hidden');
   ss('sLobby');listenRoom();
@@ -691,7 +565,7 @@ function listenRoom(){
 }
 
 /* ═══════════════════════════════════════════════
-   RENDER STATE
+   RENDER
 ═══════════════════════════════════════════════ */
 function render(s){
   updLobby(s);
@@ -700,49 +574,9 @@ function render(s){
   if(s.phase==='lobby')ss('sLobby');
   else if(s.phase==='countdown')renderCountdown(s);
   else if(s.phase==='playing')renderPlaying(s);
+  else if(s.phase==='reveal')renderReveal(s);
   else if(s.phase==='skipping')renderSkip(s);
   else if(s.phase==='results')renderResults(s);
-}
-
-/* ═══════════════════════════════════════════════
-   COUNTDOWN (5s before each turn)
-═══════════════════════════════════════════════ */
-function stopCountdown(){
-  if(cdIv!==null){clearInterval(cdIv);cdIv=null;}
-}
-function startCountdown(s){
-  stopCountdown();
-  function tick(){
-    const elapsed=(Date.now()-s.tStart)/1000;
-    const rem=Math.max(0,CD_SECS-elapsed);
-    const e=document.getElementById('ccNum');
-    if(e)e.textContent=Math.ceil(rem);
-    if(rem<=0){
-      stopCountdown();
-      if(isHost){
-        lastTimerKey=null;
-        update(roomRef,{phase:'playing',tStart:Date.now()});
-      }
-    }
-  }
-  tick();
-  cdIv=setInterval(tick,200);
-}
-function renderCountdown(s){
-  document.getElementById('sOvl').classList.add('hidden');
-  const order=s.playerOrder||[];
-  const curId=order[(s.curIdx||0)%order.length];
-  const curP=(s.players||{})[curId]||{};
-  const amIGuesser=curId===myId;
-  document.getElementById('ccTag').textContent=amIGuesser?'Te toca a ti':'Pasa el móvil a';
-  document.getElementById('ccName').textContent=amIGuesser?'¡Tu turno!':(curP.name||'?');
-  document.getElementById('ccSub').textContent=amIGuesser?'Pon el móvil en la frente':'Piensa en pistas...';
-  ss('sCount');
-  const ck=`${s.tStart}_${s.curIdx}`;
-  if(ck!==cdKey){
-    cdKey=ck;
-    startCountdown(s);
-  }
 }
 
 function updLobby(s){
@@ -758,150 +592,92 @@ function updLobby(s){
 }
 
 /* ═══════════════════════════════════════════════
+   COUNTDOWN
+═══════════════════════════════════════════════ */
+function stopCountdown(){if(cdIv!==null){clearInterval(cdIv);cdIv=null;}}
+function startCountdown(s){
+  stopCountdown();
+  function tick(){
+    const rem=Math.max(0,CD_SECS-(Date.now()-s.tStart)/1000);
+    const e=document.getElementById('ccNum');if(e)e.textContent=Math.ceil(rem);
+    if(rem<=0){stopCountdown();if(isHost){lastTimerKey=null;update(roomRef,{phase:'playing',tStart:Date.now()});}}
+  }
+  tick();cdIv=setInterval(tick,200);
+}
+function renderCountdown(s){
+  document.getElementById('sOvl').classList.add('hidden');
+  const order=s.playerOrder||[];
+  const curId=order[(s.curIdx||0)%order.length];
+  const curP=(s.players||{})[curId]||{};
+  const amIGuesser=curId===myId;
+  document.getElementById('ccTag').textContent=amIGuesser?'Te toca a ti':'Pasa el móvil a';
+  document.getElementById('ccName').textContent=amIGuesser?'¡Tu turno!':(curP.name||'?');
+  document.getElementById('ccSub').textContent=amIGuesser?'Pon el móvil en la frente':'Piensa en pistas...';
+  ss('sCount');
+  const ck=`${s.tStart}_${s.curIdx}`;
+  if(ck!==cdKey){cdKey=ck;startCountdown(s);}
+}
+
+/* ═══════════════════════════════════════════════
    START GAME
 ═══════════════════════════════════════════════ */
 window.startGame = async function(){
   if(selCats.size===0){toast('Elige al menos una categoría');return;}
-  // Build word list: [[word, emoji, query], ...]
-  let all=[];
-  selCats.forEach(k=>{all=[...all,...WORDS[k]];});
-  const words=sh(all); // array of [word,emoji,query]
+  let all=[];selCats.forEach(k=>{all=[...all,...WORDS[k]];});
+  const words=sh(all);
   const ps=gs.players||{};
   const order=Object.keys(ps).sort((a,b)=>ps[a].t-ps[b].t);
   const scores={};order.forEach(id=>{scores[id]=0;});
   await update(roomRef,{
-    phase:'countdown',words:words.map(w=>JSON.stringify(w)),
-    wordIdx:0,round:1,curIdx:0,playerOrder:order,
-    tStart:Date.now(),roundTime:selTime,scores,
-    skipVotes:null,readyVotes:null,retryWord:null,hintIdx:0
+    phase:'countdown',words,wordIdx:0,round:1,curIdx:0,playerOrder:order,
+    tStart:Date.now(),roundTime:selTime,wordsLimit:selWords,scores,
+    skipVotes:null,readyVotes:null
   });
 };
 
 /* ═══════════════════════════════════════════════
    PLAYING
 ═══════════════════════════════════════════════ */
-function parseWord(raw){
-  try{return JSON.parse(raw);}catch(e){return [raw,'❓',''];}
-}
-
 function renderPlaying(s){
   document.getElementById('sOvl').classList.add('hidden');
   const order=s.playerOrder||[];
   const curId=order[s.curIdx%order.length];
   const curP=(s.players||{})[curId]||{};
-  const isRetry=!!s.retryWord;
-  const rawWord=isRetry?s.retryWord:(s.words||[])[s.wordIdx]||'["...","❓",""]';
-  const [word,emoji,imgQuery]=parseWord(rawWord);
-
+  const word=(s.words||[])[s.wordIdx]||'...';
+  const catKey=WORD_CAT[word];
   document.getElementById('tTag').textContent=`Turno de ${curP.name}`;
-
-  // Find category name
-  let catLabel='FAMOSOS';
-  if(!isRetry){
-    const catKeys=[...selCats];
-    catLabel=(CAT_META[catKeys[0]]?.name||'Famosos').toUpperCase();
-  }
-  document.getElementById('wCat').textContent=catLabel;
+  document.getElementById('wCat').textContent=catKey?(CAT_META[catKey].name.toUpperCase()):'';
   document.getElementById('wTxt').textContent=word;
-  document.getElementById('retryTag').classList.toggle('hidden',!isRetry);
-
-  // Image
-  const imgWrap=document.getElementById('wordImgWrap');
-  const img=document.getElementById('wordImg');
-  const emojiEl=document.getElementById('wordEmoji');
-  if(imgQuery){
-    imgWrap.classList.remove('hidden');
-    emojiEl.textContent=emoji;
-    emojiEl.style.display='none';
-    img.style.display='block';
-    img.src=`https://source.unsplash.com/90x90/?${encodeURIComponent(imgQuery)}`;
-    img.onerror=()=>{img.style.display='none';emojiEl.style.display='block';};
-  } else {
-    imgWrap.classList.add('hidden');
-  }
-
-  // Hint
-  const hi=s.hintIdx||0;
-  if(hi>0){
-    const hint=getHint(word,hi-1);
-    showHint(hint);
-  } else {
-    hideHint();
-  }
-
-  // Show correct screen
   const amIGuesser=curId===myId;
+  document.getElementById('skipBtn').style.display=(isHost&&!amIGuesser)?'flex':'none';
   ss(amIGuesser?'sGuess':'sClues');
-
-  // Start timer — key prevents duplicate timers
   const timerKey=`${s.tStart}_${s.wordIdx}_${s.curIdx}`;
-  if(timerKey!==lastTimerKey){
-    lastTimerKey=timerKey;
-    startTimer(s);
-  }
+  if(timerKey!==lastTimerKey){lastTimerKey=timerKey;startTimer(s);}
 }
 
 /* ═══════════════════════════════════════════════
-   TIMER — only one interval ever
+   TIMER
 ═══════════════════════════════════════════════ */
-function stopTimer(){
-  if(timerIv!==null){clearInterval(timerIv);timerIv=null;}
-}
-
+function stopTimer(){if(timerIv!==null){clearInterval(timerIv);timerIv=null;}}
 function startTimer(s){
-  stopTimer(); // always clear first
+  stopTimer();
   const roundTime=s.roundTime||60;
-
   function tick(){
-    const elapsed=(Date.now()-s.tStart)/1000;
-    const rem=Math.max(0,roundTime-elapsed);
+    const rem=Math.max(0,roundTime-(Date.now()-s.tStart)/1000);
     setTimerUI(rem,roundTime);
-
-    // Hint every 60s
-    if(isHost){
-      const minPassed=Math.floor(elapsed/60);
-      const curHint=s.hintIdx||0;
-      if(minPassed>curHint && minPassed>0){
-        const rawWord=s.retryWord||(s.words||[])[s.wordIdx]||'["...","",""]';
-        const [word]=parseWord(rawWord);
-        const hint=getHint(word,minPassed-1);
-        const u={};u[`rooms/${roomCode}/hintIdx`]=minPassed;
-        update(ref(db),u);
-        toast(`💡 Pista: ${hint}`,3500);
-      }
-    }
-
     if(rem<=0){stopTimer();if(isHost)endTurn();}
   }
-  tick();
-  timerIv=setInterval(tick,200);
+  tick();timerIv=setInterval(tick,200);
 }
-
 function setTimerUI(t,total){
   const sec=Math.ceil(t),f=t/total,circ=264,off=circ*(1-f);
   const c=t<10?'var(--red)':t<20?'var(--amber)':'var(--purple)';
-  // Update BOTH arcs regardless of which screen is visible
   ['gNum','cNum'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=sec;});
   ['gArc','cArc'].forEach(id=>{const e=document.getElementById(id);if(e){e.style.strokeDashoffset=off;e.style.stroke=c;}});
 }
 
-function showHint(hint){
-  const cb=document.getElementById('cHintBox');const gb=document.getElementById('gHintBox');
-  const ct=document.getElementById('cHintText');const gt=document.getElementById('gHintText');
-  const gnh=document.getElementById('gNoHint');
-  if(cb){cb.classList.remove('hidden');cb.classList.add('hint-anim');}
-  if(gb){gb.classList.remove('hidden');gb.classList.add('hint-anim');}
-  if(ct)ct.textContent=hint;if(gt)gt.textContent=hint;
-  if(gnh)gnh.classList.add('hidden');
-}
-function hideHint(){
-  document.getElementById('cHintBox')?.classList.add('hidden');
-  document.getElementById('gHintBox')?.classList.add('hidden');
-  document.getElementById('gNoHint')?.classList.remove('hidden');
-}
-
 /* ═══════════════════════════════════════════════
-   CORRECT — next player, next turn
+   CORRECT
 ═══════════════════════════════════════════════ */
 window.markCorrect = async function(){
   if(gs.phase!=='playing')return;
@@ -909,34 +685,51 @@ window.markCorrect = async function(){
   const order=gs.playerOrder||[];
   const curId=order[gs.curIdx%order.length];
   const scores={...gs.scores};scores[curId]=(scores[curId]||0)+1;
-
-  // Rotate to next player and ALWAYS advance to the next word.
-  // wordIdx is never bumped on timeout (retryWord just snapshots words[wordIdx]),
-  // so without +1 here the next player would re-see the just-guessed retry word.
   const nextIdx=((gs.curIdx||0)+1)%order.length;
   const nextWordIdx=(gs.wordIdx||0)+1;
-
-  if(nextWordIdx>=(gs.words||[]).length){
-    await goRes(scores);return;
-  }
+  if(limitReached(nextWordIdx,gs)){await goRes(scores);return;}
   lastTimerKey=null;
-  await update(roomRef,{phase:'countdown',scores,curIdx:nextIdx,wordIdx:nextWordIdx,retryWord:null,tStart:Date.now(),skipVotes:null,hintIdx:0});
-  toast('✓ +1 para '+(gs.players||{})[curId]?.name);
+  await update(roomRef,{phase:'countdown',scores,curIdx:nextIdx,wordIdx:nextWordIdx,tStart:Date.now(),skipVotes:null});
+  toast('+1 para '+(gs.players||{})[curId]?.name);
 };
 
 /* ═══════════════════════════════════════════════
-   END TURN (time ran out) — retry same word, next player
+   END TURN — muestra la palabra a todos, el siguiente empieza cuando quiera
 ═══════════════════════════════════════════════ */
 async function endTurn(){
   const order=gs.playerOrder||[];
   const nextIdx=((gs.curIdx||0)+1)%order.length;
-  const rawWord=gs.retryWord||(gs.words||[])[gs.wordIdx]||'["...","",""]';
-  await update(roomRef,{phase:'countdown',curIdx:nextIdx,tStart:Date.now(),skipVotes:null,hintIdx:0,retryWord:rawWord});
-  toast('⏰ Tiempo — mismo personaje siguiente turno',3000);
+  // wordIdx queda apuntando a la palabra perdida para mostrarla en reveal.
+  // startNextTurn la avanzará al empezar el siguiente turno.
+  await update(roomRef,{phase:'reveal',curIdx:nextIdx,skipVotes:null});
 }
 
 /* ═══════════════════════════════════════════════
-   SKIP (unanimity)
+   REVEAL
+═══════════════════════════════════════════════ */
+function renderReveal(s){
+  document.getElementById('sOvl').classList.add('hidden');
+  const order=s.playerOrder||[];
+  const nextId=order[(s.curIdx||0)%order.length];
+  const nextP=(s.players||{})[nextId]||{};
+  const word=(s.words||[])[s.wordIdx]||'?';
+  document.getElementById('rvWord').textContent=word;
+  document.getElementById('rvNext').innerHTML=`Siguiente: <strong>${nextP.name||'?'}</strong>`;
+  const amINext=nextId===myId;
+  document.getElementById('rvBtn').classList.toggle('hidden',!amINext);
+  document.getElementById('rvWait').classList.toggle('hidden',amINext);
+  ss('sReveal');
+}
+
+window.startNextTurn = async function(){
+  const nw=(gs.wordIdx||0)+1;
+  if(limitReached(nw,gs)){await goRes(gs.scores);return;}
+  lastTimerKey=null;
+  await update(roomRef,{phase:'countdown',wordIdx:nw,tStart:Date.now()});
+};
+
+/* ═══════════════════════════════════════════════
+   SKIP
 ═══════════════════════════════════════════════ */
 window.reqSkip = async function(){
   if(gs.phase!=='playing')return;
@@ -945,60 +738,49 @@ window.reqSkip = async function(){
 };
 window.voteSkip = async function(approve){
   if(gs.phase!=='skipping')return;
-  if(((gs.skipVotes)||{})[myId]!==undefined)return; // already voted
+  if(((gs.skipVotes)||{})[myId]!==undefined)return;
   const u={};u[`rooms/${roomCode}/skipVotes/${myId}`]=approve;
   await update(ref(db),u);
 };
-
 function renderSkip(s){
   const votes=s.skipVotes||{};
   const ps=s.players||{};
   const order=s.playerOrder||[];
   const curId=order[(s.curIdx||0)%order.length];
-  // The current guesser doesn't know the word — they don't vote.
-  // Skip needs unanimity from the cluegivers only.
   const voterIds=Object.keys(ps).filter(id=>id!==curId);
   const amIGuesser=myId===curId;
   const iAlreadyVoted=votes[myId]!==undefined;
-
   const chips=document.getElementById('vChips');chips.innerHTML='';
-  let allY=voterIds.length>0, anyN=false, votedCount=0;
+  let allY=voterIds.length>0,anyN=false,votedCount=0;
   voterIds.forEach(id=>{
     const v=votes[id];const ch=document.createElement('div');
     ch.className='chip'+(v===true?' yes':v===false?' no':'');
     ch.textContent=(ps[id]?.name||'?')+(v===true?' ✓':v===false?' ✗':'');
     chips.appendChild(ch);
-    if(v!==true)allY=false;
-    if(v===false)anyN=true;
-    if(v!==undefined)votedCount++;
+    if(v!==true)allY=false;if(v===false)anyN=true;if(v!==undefined)votedCount++;
   });
-
   document.getElementById('sBtns').style.display=amIGuesser?'none':'flex';
   document.getElementById('aprvBtn').disabled=iAlreadyVoted;
   document.getElementById('denyBtn').disabled=iAlreadyVoted;
   document.getElementById('sSub').textContent=amIGuesser
-    ? `Esperando votos de los demás (${votedCount}/${voterIds.length})`
-    : `${votedCount}/${voterIds.length} votos · unanimidad`;
+    ?`Esperando votos (${votedCount}/${voterIds.length})`
+    :`${votedCount}/${voterIds.length} votos · unanimidad`;
   document.getElementById('sOvl').classList.remove('hidden');
-
   if(anyN){
     document.getElementById('sOvl').classList.add('hidden');
-    toast('Skip denegado — ¡sigue dando pistas!');
-    if(isHost){
-      lastTimerKey=null; // force timer restart
-      update(roomRef,{phase:'playing',tStart:Date.now(),skipVotes:null});
-    }
+    toast('Skip denegado');
+    if(isHost){lastTimerKey=null;update(roomRef,{phase:'playing',tStart:Date.now(),skipVotes:null});}
     return;
   }
   if(allY){
     document.getElementById('sOvl').classList.add('hidden');
-    toast('Skip aprobado ⏭ — nueva palabra');
+    toast('Skip aprobado — nueva palabra');
     if(isHost){
       const nextIdx=((gs.curIdx||0)+1)%order.length;
       const nw=(gs.wordIdx||0)+1;
-      if(nw>=(gs.words||[]).length){goRes(gs.scores);return;}
+      if(limitReached(nw,gs)){goRes(gs.scores);return;}
       lastTimerKey=null;
-      update(roomRef,{phase:'countdown',curIdx:nextIdx,wordIdx:nw,retryWord:null,tStart:Date.now(),skipVotes:null,hintIdx:0});
+      update(roomRef,{phase:'countdown',curIdx:nextIdx,wordIdx:nw,tStart:Date.now(),skipVotes:null});
     }
   }
 }
@@ -1010,14 +792,11 @@ async function goRes(scores){
   stopTimer();
   await update(roomRef,{phase:'results',scores,readyVotes:{}});
 }
-
 function renderResults(s){
-  stopTimer();
-  document.getElementById('sOvl').classList.add('hidden');
-  ss('sResults');
-  votedReady=false;
+  stopTimer();document.getElementById('sOvl').classList.add('hidden');
+  ss('sResults');votedReady=false;
   document.getElementById('readyBtn').disabled=false;
-  document.getElementById('readyBtn').textContent='Estoy listo ✓';
+  document.getElementById('readyBtn').textContent='Estoy listo';
   document.getElementById('rRound').textContent=`Ronda ${s.round||1}`;
   const scores=s.scores||{};const ps=s.players||{};
   const sorted=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
@@ -1029,16 +808,13 @@ function renderResults(s){
     d.innerHTML=`<span class="srank">${m}</span><div class="av" style="background:${col(p.color||0)}22;color:${col(p.color||0)};width:26px;height:26px;font-size:10px">${ini(p.name)}</div><span class="sname">${p.name||'?'}</span><span class="spts">${pts} pts</span>`;
     list.appendChild(d);
   });
-  if(sorted.length>3){
-    sorted.slice(3).forEach(([id,pts],i)=>{
-      const p=ps[id]||{};const d=document.createElement('div');d.className='srow';
-      d.innerHTML=`<span class="srank">${i+4}</span><div class="av" style="background:${col(p.color||0)}22;color:${col(p.color||0)};width:26px;height:26px;font-size:10px">${ini(p.name)}</div><span class="sname">${p.name||'?'}</span><span class="spts">${pts} pts</span>`;
-      list.appendChild(d);
-    });
-  }
+  sorted.slice(3).forEach(([id,pts],i)=>{
+    const p=ps[id]||{};const d=document.createElement('div');d.className='srow';
+    d.innerHTML=`<span class="srank">${i+4}</span><div class="av" style="background:${col(p.color||0)}22;color:${col(p.color||0)};width:26px;height:26px;font-size:10px">${ini(p.name)}</div><span class="sname">${p.name||'?'}</span><span class="spts">${pts} pts</span>`;
+    list.appendChild(d);
+  });
   updReady(s);
 }
-
 function updReady(s){
   const votes=s.readyVotes||{};const ps=s.players||{};
   const chips=document.getElementById('rChips');chips.innerHTML='';
@@ -1048,7 +824,6 @@ function updReady(s){
   });
   if(Object.keys(ps).length>0&&Object.keys(ps).every(id=>votes[id])&&isHost)nextRound(s);
 }
-
 window.voteReady = async function(){
   if(votedReady)return;votedReady=true;
   document.getElementById('readyBtn').disabled=true;
@@ -1056,16 +831,14 @@ window.voteReady = async function(){
   const u={};u[`rooms/${roomCode}/readyVotes/${myId}`]=true;
   await update(ref(db),u);
 };
-
 async function nextRound(s){
   const ps=s.players||{};
   const order=s.playerOrder||Object.keys(ps).sort((a,b)=>ps[a].t-ps[b].t);
   const nextIdx=((s.curIdx||0)+1)%order.length;
-  // Reuse same word bank (already stored in DB) but reshuffle
   const words=sh([...(s.words||[])]);
   const scores={};order.forEach(id=>{scores[id]=0;});
   lastTimerKey=null;
-  await update(roomRef,{phase:'countdown',round:(s.round||1)+1,words,wordIdx:0,curIdx:nextIdx,tStart:Date.now(),scores,skipVotes:null,readyVotes:null,retryWord:null,hintIdx:0});
+  await update(roomRef,{phase:'countdown',round:(s.round||1)+1,words,wordIdx:0,curIdx:nextIdx,tStart:Date.now(),scores,skipVotes:null,readyVotes:null});
 }
 </script>
 </body>
