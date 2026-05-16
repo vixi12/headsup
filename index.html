@@ -207,7 +207,7 @@ input[type="text"]:focus { border-color: var(--purple); }
           <div class="sel-grid" id="wordsGrid"></div>
 
           <div class="lbl" style="margin-top:14px;">Número de rondas</div>
-          <div class="sel-grid" id="roundsGrid"></div>
+          <input type="number" id="roundsIn" min="1" max="99" placeholder="∞ ilimitadas" style="margin-bottom:0;font-family:var(--font);font-size:15px;letter-spacing:0;text-align:left;text-transform:none;padding:10px 14px;">
 
           <div class="lbl" style="margin-top:14px;">Temática visible al que adivina</div>
           <div class="sel-grid" style="grid-template-columns:1fr 1fr;" id="showCatGrid"></div>
@@ -462,7 +462,7 @@ let timerIv=null, lastTimerKey=null;
 let cdIv=null, cdKey=null;
 const CD_SECS=5;
 
-let selType='personas', selCats=new Set(['famosos']), selTime=60, selWords=0, selRounds=0, selShowCat=true;
+let selType='personas', selCats=new Set(['famosos']), selTime=60, selWords=0, selShowCat=true;
 let votedReady=false;
 
 /* ═══════════════════════════════════════════════
@@ -530,15 +530,6 @@ function buildWordsGrid(){
   });
 }
 
-function buildRoundsGrid(){
-  const g=document.getElementById('roundsGrid');g.innerHTML='';
-  [{v:0,l:'∞'},{v:1,l:'1'},{v:2,l:'2'},{v:3,l:'3'},{v:5,l:'5'}].forEach(o=>{
-    const d=document.createElement('div');d.className='sel-btn'+(o.v===selRounds?' on':'');
-    d.textContent=o.l;
-    d.onclick=()=>{selRounds=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');};
-    g.appendChild(d);
-  });
-}
 
 function buildShowCatGrid(){
   const g=document.getElementById('showCatGrid');g.innerHTML='';
@@ -594,7 +585,7 @@ window.createRoom = async function(){
   roomRef=ref(db,'rooms/'+roomCode);
   await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,words:[],wordIdx:0,scores:{},roundTime:60,wordsLimit:0,players:{[myId]:{name:myName,color:0,t:Date.now()}}});
   document.getElementById('dCode').textContent=roomCode;
-  buildTimeGrid();buildWordsGrid();buildRoundsGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
+  buildTimeGrid();buildWordsGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
   document.getElementById('hCtrl').classList.remove('hidden');
   document.getElementById('gWait').classList.add('hidden');
   ss('sLobby');listenRoom();
@@ -691,7 +682,7 @@ window.startGame = async function(){
   const scores={};order.forEach(id=>{scores[id]=0;});
   await update(roomRef,{
     phase:'countdown',words,wordIdx:0,round:1,curIdx:0,playerOrder:order,
-    tStart:Date.now(),roundTime:selTime,wordsLimit:selWords,roundsLimit:selRounds,showCat:selShowCat,scores,
+    tStart:Date.now(),roundTime:selTime,wordsLimit:selWords,roundsLimit:parseInt(document.getElementById('roundsIn').value)||0,showCat:selShowCat,scores,
     skipVotes:null,readyVotes:null
   });
 };
