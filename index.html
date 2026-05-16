@@ -235,8 +235,8 @@ input[type="text"]:focus { border-color: var(--purple); }
   <!-- REVEAL (word shown after timeout) -->
   <div class="screen hidden" id="sReveal">
     <div class="rvwrap fi">
-      <div class="rvtag">Tiempo agotado</div>
-      <div class="rvlabel">La palabra era...</div>
+      <div class="rvtag" id="rvTag">Tiempo agotado</div>
+      <div class="rvlabel" id="rvLabel">La palabra era...</div>
       <div class="rvword" id="rvWord">—</div>
       <div class="rvsep"></div>
       <div class="rvnext" id="rvNext">Siguiente: <strong>—</strong></div>
@@ -396,6 +396,38 @@ const WORDS = {
     'Desierto del Sahara','Amazonia','La Habana','Tokio',
     'Nueva York','París','Roma','Barcelona','Dubai','Londres',
   ],
+  lol: [
+    'Aatrox','Ahri','Akali','Alistar','Amumu','Anivia','Annie',
+    'Aphelios','Ashe','Aurelion Sol','Azir',
+    'Bard','Blitzcrank','Brand','Braum',
+    'Caitlyn','Camille','Cassiopeia','Cho\'Gath',
+    'Darius','Diana','Dr. Mundo','Draven',
+    'Ekko','Elise','Evelynn','Ezreal',
+    'Fiddlesticks','Fiora','Fizz',
+    'Gangplank','Garen','Gnar','Graves',
+    'Hecarim','Heimerdinger',
+    'Illaoi','Irelia','Ivern',
+    'Janna','Jarvan IV','Jax','Jayce','Jhin','Jinx',
+    'Kalista','Karma','Karthus','Kassadin','Katarina','Kayle','Kayn',
+    'Kennen','Kha\'Zix','Kindred','Kled','Kog\'Maw',
+    'LeBlanc','Lee Sin','Leona','Lillia','Lissandra','Lucian','Lulu','Lux',
+    'Malphite','Malzahar','Master Yi','Miss Fortune','Mordekaiser','Morgana',
+    'Nami','Nasus','Nautilus','Neeko','Nidalee','Nocturne','Nunu',
+    'Olaf','Orianna','Ornn',
+    'Pantheon','Poppy','Pyke',
+    'Qiyana','Quinn',
+    'Rakan','Rammus','Rell','Renekton','Rengar','Riven','Rumble','Ryze',
+    'Samira','Sejuani','Senna','Seraphine','Sett','Shaco','Shen','Shyvana',
+    'Singed','Sion','Sivir','Skarner','Sona','Soraka','Swain','Syndra','Sylas',
+    'Taliyah','Talon','Taric','Teemo','Thresh','Tristana','Trundle',
+    'Tryndamere','Twisted Fate','Twitch',
+    'Urgot',
+    'Varus','Vayne','Veigar','Vel\'Koz','Vi','Viktor','Vladimir','Volibear',
+    'Warwick','Wukong',
+    'Xayah','Xerath','Xin Zhao',
+    'Yasuo','Yone','Yorick','Yuumi',
+    'Zac','Zed','Ziggs','Zilean','Zoe','Zyra',
+  ],
 };
 
 const CAT_META = {
@@ -407,6 +439,7 @@ const CAT_META = {
   comida:   { name:'Comida',    type:'cosas' },
   animales: { name:'Animales',  type:'cosas' },
   lugares:  { name:'Lugares',   type:'cosas' },
+  lol:      { name:'LoL (−2020)', type:'cosas' },
 };
 
 // Lookup: word → category name (for display in word card)
@@ -574,7 +607,7 @@ function render(s){
   if(s.phase==='lobby')ss('sLobby');
   else if(s.phase==='countdown')renderCountdown(s);
   else if(s.phase==='playing')renderPlaying(s);
-  else if(s.phase==='reveal')renderReveal(s);
+  else if(s.phase==='reveal'||s.phase==='between')renderReveal(s);
   else if(s.phase==='skipping')renderSkip(s);
   else if(s.phase==='results')renderResults(s);
 }
@@ -689,7 +722,7 @@ window.markCorrect = async function(){
   const nextWordIdx=(gs.wordIdx||0)+1;
   if(limitReached(nextWordIdx,gs)){await goRes(scores);return;}
   lastTimerKey=null;
-  await update(roomRef,{phase:'countdown',scores,curIdx:nextIdx,wordIdx:nextWordIdx,tStart:Date.now(),skipVotes:null});
+  await update(roomRef,{phase:'between',scores,curIdx:nextIdx,wordIdx:nextWordIdx,skipVotes:null});
   toast('+1 para '+(gs.players||{})[curId]?.name);
 };
 
@@ -712,8 +745,17 @@ function renderReveal(s){
   const order=s.playerOrder||[];
   const nextId=order[(s.curIdx||0)%order.length];
   const nextP=(s.players||{})[nextId]||{};
-  const word=(s.words||[])[s.wordIdx]||'?';
-  document.getElementById('rvWord').textContent=word;
+  const tag=document.getElementById('rvTag');
+  const lbl=document.getElementById('rvLabel');
+  const wrd=document.getElementById('rvWord');
+  if(s.phase==='reveal'){
+    tag.textContent='Tiempo agotado';tag.style.color='var(--red)';
+    lbl.classList.remove('hidden');wrd.classList.remove('hidden');
+    wrd.textContent=(s.words||[])[s.wordIdx]||'?';
+  }else{
+    tag.textContent='¡Correcto!';tag.style.color='var(--green)';
+    lbl.classList.add('hidden');wrd.classList.add('hidden');
+  }
   document.getElementById('rvNext').innerHTML=`Siguiente: <strong>${nextP.name||'?'}</strong>`;
   const amINext=nextId===myId;
   document.getElementById('rvBtn').classList.toggle('hidden',!amINext);
@@ -722,7 +764,9 @@ function renderReveal(s){
 }
 
 window.startNextTurn = async function(){
-  const nw=(gs.wordIdx||0)+1;
+  // reveal (timeout): wordIdx apunta a la palabra perdida → avanzar +1
+  // between (correcto): wordIdx ya fue avanzado por markCorrect → usar tal cual
+  const nw=gs.phase==='reveal'?(gs.wordIdx||0)+1:(gs.wordIdx||0);
   if(limitReached(nw,gs)){await goRes(gs.scores);return;}
   lastTimerKey=null;
   await update(roomRef,{phase:'countdown',wordIdx:nw,tStart:Date.now()});
