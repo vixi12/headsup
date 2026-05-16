@@ -20,12 +20,12 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 .glow { position: fixed; pointer-events: none; z-index: 0; border-radius: 50%; filter: blur(80px); opacity: 0.1; }
 .g1 { width: 400px; height: 400px; background: var(--purple); top: -100px; left: -100px; }
 .g2 { width: 300px; height: 300px; background: #3b82f6; bottom: -80px; right: -80px; }
-.screen { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 20px; z-index: 1; overflow-y: auto; }
+.screen { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; z-index: 1; overflow-y: auto; }
 .screen.hidden { display: none; }
 .logo { font-size: 44px; font-weight: 800; letter-spacing: -1px; background: linear-gradient(135deg, #f0ecff 0%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
-.tagline { font-size: 12px; color: var(--muted); letter-spacing: 0.14em; margin-bottom: 36px; }
-.card { background: var(--surface); border: 0.5px solid var(--border2); border-radius: 20px; padding: 24px; width: 100%; max-width: 380px; }
-.btn { width: 100%; padding: 14px; border-radius: 14px; border: none; font-family: var(--font); font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.tagline { font-size: 12px; color: var(--muted); letter-spacing: 0.14em; margin-bottom: 32px; }
+.card { background: var(--surface); border: 0.5px solid var(--border2); border-radius: 20px; padding: 22px; width: 100%; max-width: 400px; }
+.btn { width: 100%; padding: 13px; border-radius: 14px; border: none; font-family: var(--font); font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .btn:active { transform: scale(0.97); }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 .btn-p { background: var(--purple); color: #fff; }
@@ -36,44 +36,54 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 .btn-r { background: var(--red); color: #1a0808; font-weight: 700; }
 .btn-ghost { background: transparent; color: var(--muted); border: 0.5px solid var(--border); padding: 9px 18px; width: auto; font-size: 12px; border-radius: 10px; }
 .btn-ghost:hover { color: var(--text); border-color: var(--border2); }
-input[type="text"] { width: 100%; padding: 13px 16px; background: var(--surface2); border: 0.5px solid var(--border2); border-radius: 12px; color: var(--text); font-family: var(--mono); font-size: 22px; letter-spacing: 0.15em; text-align: center; text-transform: uppercase; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
+input[type="text"] { width: 100%; padding: 12px 16px; background: var(--surface2); border: 0.5px solid var(--border2); border-radius: 12px; color: var(--text); font-family: var(--mono); font-size: 22px; letter-spacing: 0.15em; text-align: center; text-transform: uppercase; outline: none; transition: border-color 0.2s; margin-bottom: 12px; }
 input[type="text"]::placeholder { color: var(--hint); font-size: 14px; letter-spacing: 0.05em; }
 input[type="text"]:focus { border-color: var(--purple); }
 .name-in { font-family: var(--font) !important; font-size: 16px !important; letter-spacing: 0.02em !important; text-align: left !important; text-transform: none !important; }
 .lbl { font-size: 10px; color: var(--hint); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; display: block; }
-.divider { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: var(--hint); font-size: 12px; }
+.divider { display: flex; align-items: center; gap: 12px; margin: 16px 0; color: var(--hint); font-size: 12px; }
 .divider::before, .divider::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
-.code-box { text-align: center; padding: 18px; background: var(--purple-dim); border: 1px solid var(--purple-border); border-radius: 16px; margin-bottom: 20px; }
-.code-val { font-family: var(--mono); font-size: 38px; color: var(--text); letter-spacing: 0.15em; }
+.code-box { text-align: center; padding: 16px; background: var(--purple-dim); border: 1px solid var(--purple-border); border-radius: 16px; margin-bottom: 18px; }
+.code-val { font-family: var(--mono); font-size: 36px; color: var(--text); letter-spacing: 0.15em; }
 .code-hint { font-size: 11px; color: var(--muted); margin-top: 4px; }
 .sec { font-size: 10px; color: var(--hint); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
-.plist { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
-.prow { display: flex; align-items: center; gap: 10px; background: var(--surface2); border-radius: 12px; padding: 10px 14px; border: 0.5px solid var(--border); }
+.plist { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+.prow { display: flex; align-items: center; gap: 10px; background: var(--surface2); border-radius: 12px; padding: 9px 14px; border: 0.5px solid var(--border); }
 .prow.me { border-color: var(--purple-border); }
-.av { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+.av { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
 .pname { flex: 1; font-size: 14px; }
 .badge { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 600; background: var(--purple-dim); color: var(--purple); border: 0.5px solid var(--purple-border); }
-.cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-.cbt { background: var(--surface2); border: 0.5px solid var(--border2); border-radius: 14px; padding: 14px 10px; text-align: center; cursor: pointer; transition: all 0.15s; }
+.cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.cbt { background: var(--surface2); border: 0.5px solid var(--border2); border-radius: 12px; padding: 12px 8px; text-align: center; cursor: pointer; transition: all 0.15s; }
 .cbt:hover { border-color: var(--purple-border); }
 .cbt.sel { background: var(--purple-dim); border-color: var(--purple); }
-.ci { font-size: 26px; margin-bottom: 5px; }
-.cn { font-size: 12px; font-weight: 600; }
+.ci { font-size: 22px; margin-bottom: 4px; }
+.cn { font-size: 11px; font-weight: 600; }
 .cc { font-size: 10px; color: var(--muted); margin-top: 1px; }
-.gwrap { width: 100%; max-width: 380px; display: flex; flex-direction: column; align-items: center; }
-.tring { position: relative; width: 110px; height: 110px; margin: 0 auto 20px; }
+.cbt-all { grid-column: 1 / -1; }
+.gwrap { width: 100%; max-width: 400px; display: flex; flex-direction: column; align-items: center; }
+.tring { position: relative; width: 110px; height: 110px; margin: 0 auto 16px; }
 .tring svg { transform: rotate(-90deg); }
-.tnum { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 38px; font-weight: 800; }
-.ttag { font-size: 11px; color: var(--muted); text-align: center; margin-bottom: 16px; letter-spacing: 0.05em; }
-.wcard { width: 100%; background: var(--surface); border: 1px solid var(--purple-border); border-radius: 22px; padding: 28px 20px; text-align: center; margin-bottom: 20px; }
-.wcat { font-size: 10px; color: var(--purple); letter-spacing: 0.1em; margin-bottom: 10px; }
-.wtxt { font-size: 34px; font-weight: 800; line-height: 1.1; }
-.arow { display: flex; gap: 12px; width: 100%; }
-.arow .btn { flex: 1; padding: 15px 8px; flex-direction: column; gap: 3px; }
+.tnum { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 800; }
+.ttag { font-size: 11px; color: var(--muted); text-align: center; margin-bottom: 14px; letter-spacing: 0.05em; }
+.wcard { width: 100%; background: var(--surface); border: 1px solid var(--purple-border); border-radius: 20px; padding: 24px 20px; text-align: center; margin-bottom: 16px; }
+.wcat { font-size: 10px; color: var(--purple); letter-spacing: 0.1em; margin-bottom: 8px; }
+.wtxt { font-size: 32px; font-weight: 800; line-height: 1.1; }
+.retry-tag { font-size: 11px; color: var(--amber); margin-top: 8px; letter-spacing: 0.04em; }
+.hint-box { width: 100%; background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.3); border-radius: 14px; padding: 12px 16px; margin-bottom: 14px; text-align: center; }
+.hint-label { font-size: 9px; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 4px; }
+.hint-text { font-size: 15px; font-weight: 600; color: var(--amber); }
+.hint-box.hidden { display: none; }
+.arow { display: flex; gap: 10px; width: 100%; }
+.arow .btn { flex: 1; padding: 14px 6px; flex-direction: column; gap: 3px; }
 .blbl { font-size: 10px; opacity: 0.7; font-weight: 400; }
 .gwrap2 { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; padding: 24px; text-align: center; }
 .gsub { font-size: 14px; color: var(--muted); margin-top: 14px; }
-.ghint { font-size: 10px; color: var(--hint); margin-top: 24px; letter-spacing: 0.1em; }
+.ghint-box { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.3); border-radius: 14px; padding: 14px 20px; margin-top: 20px; text-align: center; }
+.ghint-label { font-size: 9px; color: var(--amber); letter-spacing: 0.1em; margin-bottom: 4px; }
+.ghint-text { font-size: 16px; font-weight: 700; color: var(--amber); }
+.ghint-box.hidden { display: none; }
+.gno-hint { font-size: 11px; color: var(--hint); margin-top: 24px; letter-spacing: 0.08em; }
 .sovl { position: fixed; inset: 0; z-index: 50; background: rgba(13,10,26,0.93); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; }
 .sovl.hidden { display: none; }
 .stit { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
@@ -84,32 +94,39 @@ input[type="text"]:focus { border-color: var(--purple); }
 .chip { display: flex; align-items: center; gap: 6px; background: var(--surface2); border-radius: 20px; padding: 6px 14px; font-size: 12px; border: 0.5px solid var(--border); }
 .chip.yes { border-color: var(--green); color: var(--green); }
 .chip.no { border-color: var(--red); color: var(--red); }
-.rwrap { width: 100%; max-width: 380px; }
+.rwrap { width: 100%; max-width: 400px; }
 .rtit { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 4px; }
-.rround { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 20px; }
-.srow { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; margin-bottom: 8px; background: var(--surface2); border: 0.5px solid var(--border); }
+.rround { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 18px; }
+.srow { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 14px; margin-bottom: 7px; background: var(--surface2); border: 0.5px solid var(--border); }
 .srow.top { background: var(--purple-dim); border-color: var(--purple-border); }
 .srank { font-size: 18px; width: 26px; text-align: center; }
-.sname { flex: 1; font-size: 15px; font-weight: 600; }
+.sname { flex: 1; font-size: 14px; font-weight: 600; }
 .spts { font-size: 18px; font-weight: 800; color: var(--purple); }
-.rbox { background: var(--surface2); border-radius: 14px; padding: 16px; border: 0.5px solid var(--border); margin-bottom: 14px; }
+.rbox { background: var(--surface2); border-radius: 14px; padding: 14px; border: 0.5px solid var(--border); margin-bottom: 12px; }
 .rhint { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
 .rchips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 0.5px solid var(--border2); border-radius: 12px; padding: 11px 20px; font-size: 13px; z-index: 100; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; }
 .toast.hidden { opacity: 0; }
-.mwrap { position: fixed; inset: 0; z-index: 200; background: rgba(13,10,26,0.95); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.mwrap { position: fixed; inset: 0; z-index: 200; background: rgba(13,10,26,0.95); display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
 .mwrap.hidden { display: none; }
-.modal { background: var(--surface); border: 0.5px solid var(--border2); border-radius: 20px; padding: 24px; width: 100%; max-width: 360px; max-height: 90vh; overflow-y: auto; }
+.modal { background: var(--surface); border: 0.5px solid var(--border2); border-radius: 20px; padding: 22px; width: 100%; max-width: 380px; max-height: 90vh; overflow-y: auto; }
 .mtit { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-.msub { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
-.msteps { font-size: 12px; color: var(--muted); line-height: 2; margin-bottom: 16px; }
+.msub { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+.msteps { font-size: 12px; color: var(--muted); line-height: 2; margin-bottom: 14px; }
 .msteps a { color: var(--purple); }
 .mfield { margin-bottom: 12px; }
 .mfield label { font-size: 10px; color: var(--hint); letter-spacing: 0.08em; display: block; margin-bottom: 5px; text-transform: uppercase; }
 .mfield input { font-family: var(--mono) !important; font-size: 13px !important; letter-spacing: 0.04em !important; text-align: left !important; text-transform: none !important; }
 .merr { font-size: 12px; color: var(--red); min-height: 16px; margin: 6px 0; }
+.settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.time-btn { background: var(--surface2); border: 0.5px solid var(--border2); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.15s; font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--text); }
+.time-btn:hover { border-color: var(--purple-border); }
+.time-btn.sel { background: var(--purple-dim); border-color: var(--purple); color: var(--purple); }
+.time-sub { font-size: 10px; color: var(--muted); font-weight: 400; display: block; margin-top: 2px; }
 @keyframes fi { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 .fi { animation: fi 0.3s ease forwards; }
+@keyframes hint-in { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+.hint-anim { animation: hint-in 0.4s ease forwards; }
 </style>
 </head>
 <body>
@@ -117,17 +134,16 @@ input[type="text"]:focus { border-color: var(--purple); }
   <div class="glow g1"></div>
   <div class="glow g2"></div>
 
-  <!-- CONFIG -->
+  <!-- CONFIG MODAL -->
   <div class="mwrap" id="cfgM">
     <div class="modal">
       <div class="mtit">Configura Firebase 🔥</div>
-      <div class="msub">Proyecto Firebase gratuito para el multijugador en tiempo real.</div>
+      <div class="msub">Proyecto Firebase gratuito para el multijugador.</div>
       <div class="msteps">
         1. <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a><br>
         2. Nuevo proyecto → Realtime Database → Crear<br>
         3. Modo prueba → Siguiente<br>
-        4. ⚙ Configuración → Agrega app web<br>
-        5. Copia los datos aquí:
+        4. ⚙ Configuración → Agrega app web → copia los datos
       </div>
       <div class="mfield"><label>Database URL</label><input type="text" id="cfgUrl" placeholder="https://proyecto-rtdb.firebaseio.com"></div>
       <div class="mfield"><label>API Key</label><input type="text" id="cfgKey" placeholder="AIzaSy..."></div>
@@ -143,7 +159,7 @@ input[type="text"]:focus { border-color: var(--purple); }
     <div class="tagline">EL JUEGO DE LAS PISTAS</div>
     <div class="card">
       <span class="lbl">Tu nombre</span>
-      <input type="text" class="name-in" id="pName" placeholder="¿Cómo te llamas?" maxlength="16" style="margin-bottom:20px;">
+      <input type="text" class="name-in" id="pName" placeholder="¿Cómo te llamas?" maxlength="16" style="margin-bottom:18px;">
       <button class="btn btn-p" onclick="createRoom()" style="margin-bottom:10px;">✦ Crear sala</button>
       <div class="divider">o únete con un código</div>
       <span class="lbl">Código de sala</span>
@@ -155,7 +171,7 @@ input[type="text"]:focus { border-color: var(--purple); }
 
   <!-- LOBBY -->
   <div class="screen hidden" id="sLobby">
-    <div style="width:100%;max-width:380px;" class="fi">
+    <div style="width:100%;max-width:400px;" class="fi">
       <div class="code-box">
         <div style="font-size:10px;color:var(--muted);letter-spacing:0.12em;margin-bottom:6px;">CÓDIGO DE SALA</div>
         <div class="code-val" id="dCode">----</div>
@@ -163,18 +179,28 @@ input[type="text"]:focus { border-color: var(--purple); }
       </div>
       <div class="sec">Jugadores (<span id="pCnt">1</span>/8)</div>
       <div class="plist" id="pList"></div>
+
+      <!-- HOST CONTROLS -->
       <div id="hCtrl">
-        <div class="sec" style="margin-top:14px;">Categoría</div>
-        <div class="cat-grid" id="catGrid"></div>
+        <div class="sec" style="margin-top:12px;">⚙ Configuración de partida</div>
+        <div style="background:var(--surface2);border-radius:14px;padding:14px;border:0.5px solid var(--border);margin-bottom:12px;">
+
+          <div class="lbl" style="margin-bottom:8px;">Duración del turno</div>
+          <div class="settings-grid" id="timeGrid"></div>
+
+          <div class="lbl" style="margin-top:12px;margin-bottom:8px;">Categorías</div>
+          <div class="cat-grid" id="catGrid"></div>
+        </div>
         <button class="btn btn-p" onclick="startGame()">▶ Empezar partida</button>
       </div>
+
       <div id="gWait" class="hidden" style="text-align:center;padding:24px;color:var(--muted);font-size:14px;">
         Esperando a que el host empiece...
       </div>
     </div>
   </div>
 
-  <!-- GUESSER -->
+  <!-- GUESSER SCREEN -->
   <div class="screen hidden" id="sGuess">
     <div class="gwrap2 fi">
       <div class="tring">
@@ -185,13 +211,17 @@ input[type="text"]:focus { border-color: var(--purple); }
         <div class="tnum" id="gNum">60</div>
       </div>
       <div class="gsub">¡Escucha las pistas de tus amigos!</div>
-      <div class="ghint">— NO MIRES LA PANTALLA —</div>
+      <div class="ghint-box hidden" id="gHintBox">
+        <div class="ghint-label">💡 PISTA</div>
+        <div class="ghint-text" id="gHintText">—</div>
+      </div>
+      <div class="gno-hint" id="gNoHint">— esperando pistas —</div>
     </div>
   </div>
 
-  <!-- CLUES -->
+  <!-- CLUES SCREEN -->
   <div class="screen hidden" id="sClues">
-    <div class="gwrap fi" style="margin-top:20px;">
+    <div class="gwrap fi" style="margin-top:16px;">
       <div class="ttag" id="tTag">Turno de...</div>
       <div class="tring">
         <svg width="110" height="110" viewBox="0 0 110 110">
@@ -203,6 +233,11 @@ input[type="text"]:focus { border-color: var(--purple); }
       <div class="wcard">
         <div class="wcat" id="wCat">FAMOSOS</div>
         <div class="wtxt" id="wTxt">—</div>
+        <div class="retry-tag hidden" id="retryTag">🔄 Segunda oportunidad</div>
+      </div>
+      <div class="hint-box hidden" id="cHintBox">
+        <div class="hint-label">💡 PISTA AUTOMÁTICA</div>
+        <div class="hint-text" id="cHintText">—</div>
       </div>
       <div class="arow">
         <button class="btn btn-g" onclick="markCorrect()">✓<span class="blbl">acertó</span></button>
@@ -216,7 +251,7 @@ input[type="text"]:focus { border-color: var(--purple); }
     <div class="rwrap fi">
       <div class="rtit">Resultados</div>
       <div class="rround" id="rRound">Ronda 1</div>
-      <div id="sList" style="margin-bottom:16px;"></div>
+      <div id="sList" style="margin-bottom:14px;"></div>
       <div class="rbox">
         <div class="rhint">¿Todos listos para la siguiente ronda?</div>
         <div class="rchips" id="rChips"></div>
@@ -243,7 +278,102 @@ input[type="text"]:focus { border-color: var(--purple); }
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getDatabase, ref, set, get, onValue, update } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
-const COLORS=['#8b7cf8','#4ade80','#fb923c','#f87171','#38bdf8','#e879f9','#fbbf24','#a3e635'];
+/* ── HINTS DATABASE ── */
+const HINTS = {
+  'Madonna': ['Reina del pop','Cantante americana','Like a Virgin'],
+  'Shakira': ['Cantante colombiana','Sus caderas no mienten','Waka Waka'],
+  'Beyoncé': ['Destiny\'s Child','Single Ladies','Reina del R&B'],
+  'Taylor Swift': ['Cantante country-pop','Eras Tour','Escribió sobre sus ex'],
+  'Rihanna': ['Barbados','Umbrella','Fundadora de Fenty Beauty'],
+  'Adele': ['Hello','Cantante británica','Voz muy poderosa'],
+  'Lady Gaga': ['Poker Face','Vestuarios extravagantes','Born This Way'],
+  'Ariana Grande': ['Cola de caballo','Thank U Next','Ex de Pete Davidson'],
+  'Billie Eilish': ['Bad Guy','Hermano Finneas','Voz muy suave'],
+  'Dua Lipa': ['Levitating','Cantante albanesa-británica','Future Nostalgia'],
+  'Ed Sheeran': ['Shape of You','Guitarrista pelirrojo','Cantautor británico'],
+  'Justin Bieber': ['Baby Baby','Canadiense','Casado con Hailey'],
+  'Drake': ['Canadiense','God\'s Plan','Rapero y cantante'],
+  'Eminem': ['Slim Shady','Lose Yourself','Rapero de Detroit'],
+  'Kanye West': ['Gold Digger','Diseñador de moda','Ahora se llama Ye'],
+  'Bruno Mars': ['Uptown Funk','Hawaii','24K Magic'],
+  'The Weeknd': ['Blinding Lights','Starboy','Cantante canadiense'],
+  'Harry Styles': ['One Direction','Watermelon Sugar','Actor también'],
+  'Miley Cyrus': ['Hannah Montana','Flowers','Hija de Billy Ray'],
+  'Selena Gomez': ['Wizards of Waverly Place','Wolves','Actriz y cantante'],
+  'Michael Jackson': ['Rey del pop','Moonwalk','Thriller'],
+  'Elvis Presley': ['Rey del rock','Las Vegas','Pelvis de Elvis'],
+  'David Bowie': ['Ziggy Stardust','Space Oddity','Camaleón del rock'],
+  'Freddie Mercury': ['Queen','Bohemian Rhapsody','We Are the Champions'],
+  'John Lennon': ['The Beatles','Imagine','Liverpool'],
+  'Mick Jagger': ['Rolling Stones','Boca grande','Satisfaction'],
+  'Prince': ['Purple Rain','Minneapolis','Músico multifacético'],
+  'Elton John': ['Rocket Man','Gafas extravagantes','Lion King'],
+  'Bob Dylan': ['Premio Nobel Literatura','Blowin\' in the Wind','Cantautor folk'],
+  'Penélope Cruz': ['Actriz española','Óscar ganadora','Vicky Cristina Barcelona'],
+  'Javier Bardem': ['Actor español','No Country for Old Men','Casado con Penélope'],
+  'Antonio Banderas': ['Zorro','Málaga','El Gato con Botas'],
+  'Alejandro Sanz': ['Cantante español','Corazón Partío','Músico pop-flamenco'],
+  'Enrique Iglesias': ['Hijo de Julio','Hero','Cantante español'],
+  'Ricky Martin': ['La Vida Loca','Puertorriqueño','Menudo'],
+  'Bad Bunny': ['Reggaetonero puertorriqueño','Un Verano Sin Ti','YHLQMDLG'],
+  'J Balvin': ['Colombia','Mi Gente','Colores'],
+  'Rosalía': ['Cantante española','Motomami','Flamenco moderno'],
+  'C. Tangana': ['Cantante madrileño','El Madrileño','Antes se llamaba Crema'],
+  'Pablo Alborán': ['Cantante español','Solamente Tú','Málaga'],
+  'Aitana': ['Operación Triunfo','Cantante española','11 Razones'],
+  'Karol G': ['Colombiana','Bichota','TQG con Shakira'],
+  'Cristiano Ronaldo': ['Portugués','7 goles','CR7'],
+  'Lionel Messi': ['Argentino','10','Pulga'],
+  'Neymar': ['Brasileño','PSG','Amigo de Messi'],
+  'Kylian Mbappé': ['Francés','Muy rápido','PSG y Real Madrid'],
+  'Erling Haaland': ['Noruego','Delantero goleador','Manchester City'],
+  'LeBron James': ['Baloncesto NBA','Los Angeles Lakers','King James'],
+  'Michael Jordan': ['6 anillos NBA','Chicago Bulls','Space Jam'],
+  'Serena Williams': ['Tenis','23 Grand Slams','La mejor de la historia'],
+  'Rafael Nadal': ['Rey de la tierra batida','Español','Manacor, Mallorca'],
+  'Carlos Alcaraz': ['Joven tenista español','Murcia','Ya ganó Wimbledon'],
+  'Roger Federer': ['Suizo','20 Grand Slams','El más elegante'],
+  'Usain Bolt': ['El más rápido del mundo','Jamaica','100 metros'],
+  'Simone Biles': ['Gimnasta americana','Salto doble','La mejor gimnasta'],
+  'Albert Einstein': ['Teoría de la relatividad','E=mc²','Físico alemán'],
+  'Pablo Picasso': ['Guernica','Cubismo','Málaga'],
+  'Salvador Dalí': ['Surrealismo','Los Relojes Blandos','Bigote característico'],
+  'Frida Kahlo': ['Pintora mexicana','Ceja única','Autorretratos'],
+  'Elon Musk': ['Tesla','SpaceX','Compró Twitter'],
+  'Bill Gates': ['Microsoft','Fundación','El más rico del mundo antes'],
+  'Steve Jobs': ['Apple','iPhone','Think Different'],
+  'Mark Zuckerberg': ['Facebook','Instagram','Meta'],
+  'Barack Obama': ['44º presidente USA','Premio Nobel Paz','Primer presidente afroamericano'],
+  'Marilyn Monroe': ['Some Like It Hot','Happy Birthday Mr. President','Rubia icónica'],
+  'Leonardo DiCaprio': ['Titanic','Óscar tardío','Activista climático'],
+  'Brad Pitt': ['Fight Club','Mr. & Mrs. Smith','Ex de Angelina'],
+  'Scarlett Johansson': ['Viuda Negra','Lost in Translation','Actriz Marvel'],
+  'Jennifer Lopez': ['JLo','Selena película','De Nueva York'],
+  'Will Smith': ['Men in Black','Fresh Prince','Bofetada en los Oscar'],
+  'Tom Hanks': ['Forrest Gump','Cast Away','El actor más querido'],
+  'Ana de Armas': ['Cubana','Knives Out','Bond girl'],
+  'Pedro Pascal': ['The Mandalorian','Game of Thrones','The Last of Us'],
+  'Zendaya': ['Euphoria','Dune','Ex de Tom Holland'],
+  'Jenna Ortega': ['Wednesday Addams','Scream','Actriz joven'],
+  'Penélope Cruz': ['Actriz española','Óscar ganadora','Casada con Javier Bardem'],
+  'default': ['Persona muy famosa','Conocido mundialmente','Piensa en su profesión']
+};
+
+/* ── WORD BANKS ── */
+const WORDS = {
+  famosos: ['Madonna','Shakira','Beyoncé','Taylor Swift','Rihanna','Adele','Lady Gaga','Ariana Grande','Billie Eilish','Dua Lipa','Ed Sheeran','Justin Bieber','Drake','Eminem','Kanye West','Bruno Mars','The Weeknd','Harry Styles','Miley Cyrus','Selena Gomez','Michael Jackson','Elvis Presley','David Bowie','Freddie Mercury','John Lennon','Mick Jagger','Prince','Elton John','Bob Dylan','Penélope Cruz','Javier Bardem','Antonio Banderas','Alejandro Sanz','Enrique Iglesias','Ricky Martin','Bad Bunny','J Balvin','Rosalía','C. Tangana','Pablo Alborán','Aitana','Karol G','Cristiano Ronaldo','Lionel Messi','Neymar','Kylian Mbappé','Erling Haaland','LeBron James','Michael Jordan','Serena Williams','Rafael Nadal','Carlos Alcaraz','Roger Federer','Usain Bolt','Simone Biles','Albert Einstein','Pablo Picasso','Salvador Dalí','Frida Kahlo','Elon Musk','Bill Gates','Steve Jobs','Mark Zuckerberg','Barack Obama','Marilyn Monroe','Leonardo DiCaprio','Brad Pitt','Scarlett Johansson','Jennifer Lopez','Will Smith','Tom Hanks','Ana de Armas','Pedro Pascal','Zendaya','Jenna Ortega'],
+  peliculas: ['El Rey León','Titanic','Avatar','Star Wars','Jurassic Park','El Padrino','Forrest Gump','La La Land','Pulp Fiction','Matrix','El Señor de los Anillos','Harry Potter','Los Vengadores','Batman','Spider-Man','Frozen','Toy Story','Shrek','Buscando a Nemo','Coco','Interstellar','Inception','El Caballero Oscuro','Iron Man','Deadpool','Joker','Parasite','Oppenheimer','Barbie','Gladiator','Braveheart','La Lista de Schindler','Casablanca','El Exorcista','Tiburón','Los Cazafantasmas','Indiana Jones','Rocky','Dirty Dancing','Grease','Mamma Mia','Moulin Rouge','Chicago','Dune','Top Gun','Fast and Furious','Misión Imposible','James Bond','Rambo','El Diablo Viste de Prada'],
+  series: ['Breaking Bad','Game of Thrones','Friends','The Office','Stranger Things','La Casa de Papel','El Juego del Calamar','Narcos','Dark','Peaky Blinders','The Crown','House of Cards','Grey\'s Anatomy','The Big Bang Theory','Los Simpson','Black Mirror','Lost','Prison Break','The Sopranos','Dexter','True Detective','Bridgerton','Emily in Paris','Succession','Euphoria','The Last of Us','Wednesday','Ted Lasso','Severance','Élite','Vis a Vis','Gran Hotel','Velvet','Two and a Half Men','Seinfeld','South Park','Downton Abbey','Westworld','Ozark','House'],
+  musica: ['Rock','Pop','Reggaeton','Jazz','Blues','Hip-hop','R&B','Electrónica','Heavy metal','Punk','Country','Salsa','Flamenco','Samba','Tango','Bossa nova','Cumbia','Bachata','Ópera','Gospel','Trap','K-pop','Reggae','Afrobeats','Indie','Guitarra eléctrica','Piano clásico','Batería','DJ','Cantante de ópera','Coachella','Grammy','Eurovision','Woodstock','Glastonbury','Disco','Funk','Soul','New Wave','Rap']
+};
+
+const CATS = { famosos:{name:'Famosos',icon:'⭐'}, peliculas:{name:'Películas',icon:'🎬'}, series:{name:'Series',icon:'📺'}, musica:{name:'Música',icon:'🎵'} };
+const TIME_OPTS = [{val:30,label:'30s'},{val:60,label:'60s'},{val:90,label:'90s'},{val:120,label:'2 min'},{val:180,label:'3 min'}];
+const COLORS = ['#8b7cf8','#4ade80','#fb923c','#f87171','#38bdf8','#e879f9','#fbbf24','#a3e635'];
+
+let db, roomRef, myId, myName, roomCode, isHost=false, gs={}, tiv=null;
+let selCats=new Set(['famosos']), selTime=60, votedSkip=false, votedReady=false;
+
 function sh(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
 function gc(){return Math.random().toString(36).substring(2,6).toUpperCase();}
 function gi(){return Math.random().toString(36).substring(2,10);}
@@ -252,39 +382,35 @@ function ini(n){return(n||'?').substring(0,2).toUpperCase();}
 function ss(id){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
 function toast(m,d=2500){const t=document.getElementById('tst');t.textContent=m;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),d);}
 
-const WORDS={
-famosos:sh(['Madonna','Shakira','Beyoncé','Taylor Swift','Rihanna','Adele','Lady Gaga','Ariana Grande','Billie Eilish','Dua Lipa','Ed Sheeran','Justin Bieber','Drake','Eminem','Kanye West','Bruno Mars','The Weeknd','Harry Styles','Miley Cyrus','Selena Gomez','Michael Jackson','Elvis Presley','David Bowie','Freddie Mercury','John Lennon','Mick Jagger','Bruce Springsteen','Prince','Elton John','Bob Dylan','Penélope Cruz','Javier Bardem','Antonio Banderas','Sofía Vergara','Salma Hayek','Alejandro Sanz','Enrique Iglesias','Ricky Martin','Marc Anthony','Juanes','Bad Bunny','J Balvin','Maluma','Ozuna','Daddy Yankee','Rosalía','C. Tangana','Pablo Alborán','David Bisbal','Melendi','Aitana','Beret','Rauw Alejandro','Bizarrap','Karol G','Cristiano Ronaldo','Lionel Messi','Neymar','Kylian Mbappé','Erling Haaland','LeBron James','Michael Jordan','Serena Williams','Rafael Nadal','Carlos Alcaraz','Roger Federer','Usain Bolt','Simone Biles','Michael Phelps','Novak Djokovic','Albert Einstein','Pablo Picasso','Salvador Dalí','Frida Kahlo','Leonardo da Vinci','Elon Musk','Bill Gates','Steve Jobs','Mark Zuckerberg','Jeff Bezos','Barack Obama','Marilyn Monroe','Audrey Hepburn','Charlie Chaplin','James Dean','Tom Hanks','Meryl Streep','Leonardo DiCaprio','Brad Pitt','Angelina Jolie','Scarlett Johansson','Jennifer Lopez','Will Smith','Denzel Washington','Robert De Niro','Al Pacino','Morgan Freeman','Cate Blanchett','Natalie Portman','Ana de Armas','Pedro Pascal','Zendaya','Timothée Chalamet','Jenna Ortega','Sara Carbonero','Andrés Iniesta','Xavi Hernández','Pep Guardiola','Nicki Minaj','Cardi B','Post Malone','Travis Scott','Doja Cat']),
-peliculas:sh(['El Rey León','Titanic','Avatar','Star Wars','Jurassic Park','El Padrino','Forrest Gump','La La Land','Pulp Fiction','Matrix','El Señor de los Anillos','Harry Potter','Los Vengadores','Batman','Spider-Man','Frozen','Toy Story','Shrek','Buscando a Nemo','Coco','Interstellar','Inception','El Caballero Oscuro','Iron Man','Deadpool','Joker','Parasite','Oppenheimer','Barbie','Gladiator','Braveheart','La Lista de Schindler','Casablanca','El Exorcista','Tiburón','Los Cazafantasmas','Indiana Jones','Rocky','Dirty Dancing','Grease','Mamma Mia','Moulin Rouge','Chicago','Dune','Top Gun','Fast and Furious','Misión Imposible','James Bond','Rambo','El Diablo Viste de Prada']),
-series:sh(['Breaking Bad','Game of Thrones','Friends','The Office','Stranger Things','La Casa de Papel','El Juego del Calamar','Narcos','Dark','Peaky Blinders','The Crown','House of Cards','Grey\'s Anatomy','The Big Bang Theory','Los Simpson','Black Mirror','Lost','Prison Break','The Sopranos','Dexter','True Detective','Bridgerton','Emily in Paris','Succession','Euphoria','The Last of Us','Wednesday','Ted Lasso','Severance','Élite','Vis a Vis','Gran Hotel','Velvet','Two and a Half Men','Seinfeld','South Park','Downton Abbey','Westworld','Ozark','House']),
-musica:sh(['Rock','Pop','Reggaeton','Jazz','Blues','Hip-hop','R&B','Electrónica','Heavy metal','Punk','Country','Salsa','Flamenco','Samba','Tango','Bossa nova','Cumbia','Bachata','Ópera','Gospel','Trap','K-pop','Reggae','Afrobeats','Indie','Guitarra eléctrica','Piano clásico','Batería','DJ','Cantante de ópera','Coachella','Grammy','Eurovision','Woodstock','Glastonbury','Disco','Funk','Soul','New Wave','Rap'])
-};
-const CATS={famosos:{name:'Famosos',icon:'⭐'},peliculas:{name:'Películas',icon:'🎬'},series:{name:'Series',icon:'📺'},musica:{name:'Música',icon:'🎵'}};
+function getHint(word, hintIdx) {
+  const hints = HINTS[word] || HINTS['default'];
+  return hints[hintIdx % hints.length];
+}
 
-let db,roomRef,myId,myName,roomCode,isHost=false,gs={},tiv=null,selCat='famosos',votedSkip=false,votedReady=false;
-
-window.initFB=async function(){
+/* ── FIREBASE ── */
+window.initFB = async function() {
   const url=document.getElementById('cfgUrl').value.trim();
   const key=document.getElementById('cfgKey').value.trim();
   const pid=document.getElementById('cfgPid').value.trim();
   const err=document.getElementById('cfgErr');
   if(!url||!key||!pid){err.textContent='Completa todos los campos.';return;}
   err.textContent='Conectando...';
-  try{
+  try {
     const app=initializeApp({databaseURL:url,apiKey:key,projectId:pid,appId:'headsup'});
     db=getDatabase(app);
     localStorage.setItem('hu_cfg',JSON.stringify({url,key,pid}));
     document.getElementById('cfgM').classList.add('hidden');
     err.textContent='';
     toast('Firebase conectado ✓');
-  }catch(e){err.textContent='Error: '+e.message;}
+  } catch(e){err.textContent='Error: '+e.message;}
 };
 
-window.showCfg=()=>document.getElementById('cfgM').classList.remove('hidden');
+window.showCfg = ()=>document.getElementById('cfgM').classList.remove('hidden');
 
 (function(){
   const s=localStorage.getItem('hu_cfg');
   if(!s)return;
-  try{
+  try {
     const {url,key,pid}=JSON.parse(s);
     document.getElementById('cfgUrl').value=url;
     document.getElementById('cfgKey').value=key;
@@ -295,20 +421,59 @@ window.showCfg=()=>document.getElementById('cfgM').classList.remove('hidden');
   }catch(e){}
 })();
 
-window.createRoom=async function(){
+/* ── UI BUILDERS ── */
+function buildTimeGrid() {
+  const g=document.getElementById('timeGrid');g.innerHTML='';
+  TIME_OPTS.forEach(opt=>{
+    const d=document.createElement('div');
+    d.className='time-btn'+(opt.val===selTime?' sel':'');
+    d.innerHTML=`${opt.label}`;
+    d.onclick=()=>{selTime=opt.val;document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('sel'));d.classList.add('sel');};
+    g.appendChild(d);
+  });
+}
+
+function buildCats() {
+  const g=document.getElementById('catGrid');g.innerHTML='';
+  // All categories button
+  const allDiv=document.createElement('div');
+  allDiv.className='cbt cbt-all'+(selCats.size===4?' sel':'');
+  allDiv.innerHTML=`<div class="ci">🎯</div><div class="cn">Todas las categorías</div>`;
+  allDiv.onclick=()=>{
+    if(selCats.size===4){selCats=new Set(['famosos']);}
+    else{selCats=new Set(Object.keys(CATS));}
+    buildCats();
+  };
+  g.appendChild(allDiv);
+
+  Object.entries(CATS).forEach(([k,c])=>{
+    const d=document.createElement('div');
+    d.className='cbt'+(selCats.has(k)?' sel':'');
+    d.innerHTML=`<div class="ci">${c.icon}</div><div class="cn">${c.name}</div><div class="cc">${WORDS[k].length} palabras</div>`;
+    d.onclick=()=>{
+      if(selCats.has(k)){if(selCats.size>1)selCats.delete(k);}
+      else selCats.add(k);
+      buildCats();
+    };
+    g.appendChild(d);
+  });
+}
+
+/* ── CREATE / JOIN ── */
+window.createRoom = async function() {
   if(!db){showCfg();return;}
   myName=document.getElementById('pName').value.trim()||'Jugador';
   myId=gi();roomCode=gc();isHost=true;
   roomRef=ref(db,'rooms/'+roomCode);
-  await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,category:'famosos',words:[],wordIdx:0,scores:{},players:{[myId]:{name:myName,color:0,t:Date.now()}}});
+  await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,category:'famosos',words:[],wordIdx:0,scores:{},roundTime:60,retryWord:null,players:{[myId]:{name:myName,color:0,t:Date.now()}}});
   document.getElementById('dCode').textContent=roomCode;
-  buildCats();
+  buildTimeGrid();buildCats();
   document.getElementById('hCtrl').classList.remove('hidden');
   document.getElementById('gWait').classList.add('hidden');
   ss('sLobby');listenRoom();
 };
 
-window.joinRoom=async function(){
+window.joinRoom = async function() {
   if(!db){showCfg();return;}
   const code=(document.getElementById('joinCode').value||'').trim().toUpperCase();
   if(!code||code.length!==4){toast('Código inválido');return;}
@@ -327,7 +492,7 @@ window.joinRoom=async function(){
   ss('sLobby');listenRoom();
 };
 
-function listenRoom(){
+function listenRoom() {
   onValue(roomRef,snap=>{
     if(!snap.exists())return;
     gs=snap.val();
@@ -335,7 +500,7 @@ function listenRoom(){
   });
 }
 
-function render(s){
+function render(s) {
   updLobby(s);
   const p=s.phase;
   if(p==='lobby'){ss('sLobby');stopT();}
@@ -344,104 +509,162 @@ function render(s){
   else if(p==='results'){renderResults(s);}
 }
 
-function updLobby(s){
+function updLobby(s) {
   const ps=s.players||{};
   const sorted=Object.entries(ps).sort((a,b)=>a[1].t-b[1].t);
-  const list=document.getElementById('pList');
-  list.innerHTML='';
+  const list=document.getElementById('pList');list.innerHTML='';
   sorted.forEach(([id,p])=>{
-    const d=document.createElement('div');
-    d.className='prow'+(id===myId?' me':'');
+    const d=document.createElement('div');d.className='prow'+(id===myId?' me':'');
     d.innerHTML=`<div class="av" style="background:${col(p.color)}22;color:${col(p.color)}">${ini(p.name)}</div><span class="pname">${p.name}${id===myId?' (tú)':''}</span>${id===s.host?'<span class="badge">host</span>':''}`;
     list.appendChild(d);
   });
   document.getElementById('pCnt').textContent=Object.keys(ps).length;
 }
 
-function buildCats(){
-  const g=document.getElementById('catGrid');g.innerHTML='';
-  Object.entries(CATS).forEach(([k,c])=>{
-    const d=document.createElement('div');d.className='cbt'+(k===selCat?' sel':'');
-    d.innerHTML=`<div class="ci">${c.icon}</div><div class="cn">${c.name}</div><div class="cc">${WORDS[k].length} palabras</div>`;
-    d.onclick=()=>{selCat=k;document.querySelectorAll('.cbt').forEach(b=>b.classList.remove('sel'));d.classList.add('sel');};
-    g.appendChild(d);
-  });
-}
-
-window.startGame=async function(){
-  const words=sh([...WORDS[selCat]]);
+/* ── START GAME ── */
+window.startGame = async function() {
+  if(selCats.size===0){toast('Elige al menos una categoría');return;}
+  let allWords=[];
+  selCats.forEach(k=>{allWords=[...allWords,...WORDS[k]];});
+  const words=sh(allWords);
   const ps=gs.players||{};
   const order=Object.keys(ps).sort((a,b)=>ps[a].t-ps[b].t);
   const scores={};order.forEach(id=>{scores[id]=0;});
-  await update(roomRef,{phase:'playing',category:selCat,words,wordIdx:0,round:1,curIdx:0,playerOrder:order,tStart:Date.now(),scores,skipVotes:null,readyVotes:null});
+  await update(roomRef,{phase:'playing',words,wordIdx:0,round:1,curIdx:0,playerOrder:order,tStart:Date.now(),roundTime:selTime,scores,skipVotes:null,readyVotes:null,retryWord:null,hintIdx:0,hintShownAt:null});
 };
 
-function renderPlaying(s){
+/* ── PLAYING ── */
+function renderPlaying(s) {
   document.getElementById('sOvl').classList.add('hidden');
   const order=s.playerOrder||[];
   const curId=order[s.curIdx%order.length];
   const curP=(s.players||{})[curId]||{};
-  const word=(s.words||[])[s.wordIdx]||'...';
-  const cat=CATS[s.category]||CATS.famosos;
+  const isRetry=!!s.retryWord;
+  const word=isRetry?s.retryWord:(s.words||[])[s.wordIdx]||'...';
+  const catKey=s.category||'famosos';
+  const catName=CATS[catKey]?.name||'Famosos';
+
   document.getElementById('tTag').textContent=`Turno de ${curP.name}`;
-  document.getElementById('wCat').textContent=cat.name.toUpperCase();
+  document.getElementById('wCat').textContent=catName.toUpperCase();
   document.getElementById('wTxt').textContent=word;
+  document.getElementById('retryTag').classList.toggle('hidden',!isRetry);
+
+  // Show hint if hintIdx > 0
+  const hintIdx=s.hintIdx||0;
+  const hintShownAt=s.hintShownAt||null;
+  if(hintIdx>0 && hintShownAt){
+    const hint=getHint(word,hintIdx-1);
+    showHint(hint);
+  } else {
+    hideHint();
+  }
+
   ss(curId===myId?'sGuess':'sClues');
   startT(s);
 }
 
-function startT(s){
-  stopT();
-  const tick=()=>{
-    const e=(Date.now()-s.tStart)/1000;
-    const r=Math.max(0,60-e);
-    setTui(r);
-    if(r<=0){stopT();if(isHost)endTurn();}
-  };
-  tick();tiv=setInterval(tick,100);
+function showHint(hint){
+  ['cHintBox','gHintBox'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.classList.remove('hidden');el.classList.add('hint-anim');}
+  });
+  const ct=document.getElementById('cHintText');if(ct)ct.textContent=hint;
+  const gt=document.getElementById('gHintText');if(gt)gt.textContent=hint;
+  const gnh=document.getElementById('gNoHint');if(gnh)gnh.classList.add('hidden');
 }
+
+function hideHint(){
+  ['cHintBox','gHintBox'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.classList.add('hidden');
+  });
+  const gnh=document.getElementById('gNoHint');if(gnh)gnh.classList.remove('hidden');
+}
+
+/* ── TIMER ── */
+function startT(s) {
+  stopT();
+  const roundTime=s.roundTime||60;
+  const tick=()=>{
+    const elapsed=(Date.now()-s.tStart)/1000;
+    const rem=Math.max(0,roundTime-elapsed);
+    setTui(rem,roundTime);
+
+    // Check if we should show a new hint (every 60s of elapsed time)
+    const minutesPassed=Math.floor(elapsed/60);
+    const currentHintIdx=s.hintIdx||0;
+    if(minutesPassed>0 && minutesPassed>currentHintIdx && isHost){
+      const word=s.retryWord||(s.words||[])[s.wordIdx]||'';
+      const hint=getHint(word,minutesPassed-1);
+      const u={};
+      u[`rooms/${roomCode}/hintIdx`]=minutesPassed;
+      u[`rooms/${roomCode}/hintShownAt`]=Date.now();
+      update(ref(db),u);
+      toast(`💡 Pista ${minutesPassed}: ${hint}`,3000);
+    }
+
+    // Also update hint UI based on current state
+    const currentHint=s.hintIdx||0;
+    if(currentHint>0&&s.hintShownAt){
+      const word2=s.retryWord||(s.words||[])[s.wordIdx]||'';
+      showHint(getHint(word2,currentHint-1));
+    }
+
+    if(rem<=0){stopT();if(isHost)endTurn();}
+  };
+  tick();tiv=setInterval(tick,500);
+}
+
 function stopT(){if(tiv){clearInterval(tiv);tiv=null;}}
-function setTui(t){
-  const sec=Math.ceil(t),f=t/60,circ=289,off=circ*(1-f);
+
+function setTui(t,total){
+  const roundTime=total||gs.roundTime||60;
+  const sec=Math.ceil(t),f=t/roundTime,circ=289,off=circ*(1-f);
   const c=t<10?'var(--red)':t<20?'var(--amber)':'var(--purple)';
   ['gNum','cNum'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=sec;});
   ['gArc','cArc'].forEach(id=>{const e=document.getElementById(id);if(e){e.style.strokeDashoffset=off;e.style.stroke=c;}});
 }
 
-window.markCorrect=async function(){
+/* ── CORRECT ── */
+window.markCorrect = async function() {
   if(gs.phase!=='playing')return;
   const order=gs.playerOrder||[];
   const curId=order[gs.curIdx%order.length];
   const scores={...gs.scores};scores[curId]=(scores[curId]||0)+1;
-  const nw=(gs.wordIdx||0)+1;
-  if(nw>=(gs.words||[]).length){await goRes(scores);return;}
-  await update(roomRef,{scores,wordIdx:nw,tStart:Date.now(),skipVotes:null});
+  const nextW=(gs.wordIdx||0)+(gs.retryWord?0:1);
+  const u={scores,tStart:Date.now(),skipVotes:null,hintIdx:0,hintShownAt:null,retryWord:null};
+  if(!gs.retryWord) u.wordIdx=nextW;
+  if(nextW>=(gs.words||[]).length&&!gs.retryWord){await goRes(scores);return;}
+  await update(roomRef,u);
   toast('✓ +1 para '+(gs.players||{})[curId]?.name);
 };
 
-async function endTurn(){
+/* ── END TURN (time ran out — retry same word) ── */
+async function endTurn() {
   const order=gs.playerOrder||[];
   const ni=((gs.curIdx||0)+1)%order.length;
-  const nw=(gs.wordIdx||0)+1;
-  if(nw>=(gs.words||[]).length){await goRes(gs.scores);return;}
-  await update(roomRef,{curIdx:ni,wordIdx:nw,tStart:Date.now(),skipVotes:null});
+  const currentWord=gs.retryWord||(gs.words||[])[gs.wordIdx]||'';
+  // Save current word as retryWord, advance player
+  await update(roomRef,{curIdx:ni,tStart:Date.now(),skipVotes:null,hintIdx:0,hintShownAt:null,retryWord:currentWord});
+  toast('⏰ Tiempo — ¡el mismo personaje en el siguiente turno!',3000);
 }
 
-window.reqSkip=async function(){
+/* ── SKIP ── */
+window.reqSkip = async function() {
   if(gs.phase!=='playing')return;
   votedSkip=false;
   document.getElementById('aprvBtn').disabled=false;
   await update(roomRef,{phase:'skipping',skipVotes:{}});
 };
 
-window.voteSkip=async function(approve){
+window.voteSkip = async function(approve) {
   if(votedSkip)return;votedSkip=true;
   document.getElementById('aprvBtn').disabled=true;
   const u={};u[`rooms/${roomCode}/skipVotes/${myId}`]=approve;
   await update(ref(db),u);
 };
 
-function renderSkip(s){
+function renderSkip(s) {
   stopT();
   const votes=s.skipVotes||{};
   const ps=s.players||{};
@@ -450,12 +673,10 @@ function renderSkip(s){
   let allY=true,anyN=false;
   ids.forEach(id=>{
     const v=votes[id];
-    const ch=document.createElement('div');
-    ch.className='chip'+(v===true?' yes':v===false?' no':'');
+    const ch=document.createElement('div');ch.className='chip'+(v===true?' yes':v===false?' no':'');
     ch.textContent=(ps[id]?.name||'?')+(v===true?' ✓':v===false?' ✗':'');
     chips.appendChild(ch);
-    if(v!==true)allY=false;
-    if(v===false)anyN=true;
+    if(v!==true)allY=false;if(v===false)anyN=true;
   });
   document.getElementById('sSub').textContent=`${Object.keys(votes).length}/${ids.length} han votado · unanimidad requerida`;
   document.getElementById('sOvl').classList.remove('hidden');
@@ -467,16 +688,17 @@ function renderSkip(s){
   }
   if(allY&&ids.length>0&&Object.keys(votes).length===ids.length){
     document.getElementById('sOvl').classList.add('hidden');
-    toast('Skip aprobado — nueva palabra ⏭');
+    toast('Skip aprobado ⏭');
     if(isHost){
       const nw=(gs.wordIdx||0)+1;
       if(nw>=(gs.words||[]).length){goRes(gs.scores);return;}
-      update(roomRef,{phase:'playing',wordIdx:nw,tStart:Date.now(),skipVotes:null});
+      update(roomRef,{phase:'playing',wordIdx:nw,retryWord:null,tStart:Date.now(),skipVotes:null,hintIdx:0,hintShownAt:null});
     }
     votedSkip=false;
   }
 }
 
+/* ── RESULTS ── */
 async function goRes(scores){
   stopT();
   await update(roomRef,{phase:'results',scores,readyVotes:{}});
@@ -495,9 +717,9 @@ function renderResults(s){
   const list=document.getElementById('sList');list.innerHTML='';
   const medals=['🥇','🥈','🥉'];
   sorted.forEach(([id,pts],i)=>{
-    const p=ps[id]||{};
-    const d=document.createElement('div');d.className='srow'+(i===0?' top':'');
-    d.innerHTML=`<span class="srank">${medals[i]||i+1}</span><div class="av" style="background:${col(p.color||0)}22;color:${col(p.color||0)};width:28px;height:28px;font-size:10px">${ini(p.name)}</div><span class="sname">${p.name||'?'}</span><span class="spts">${pts} pts</span>`;
+    const p=ps[id]||{};const d=document.createElement('div');
+    d.className='srow'+(i===0?' top':'');
+    d.innerHTML=`<span class="srank">${medals[i]||i+1}</span><div class="av" style="background:${col(p.color||0)}22;color:${col(p.color||0)};width:26px;height:26px;font-size:10px">${ini(p.name)}</div><span class="sname">${p.name||'?'}</span><span class="spts">${pts} pts</span>`;
     list.appendChild(d);
   });
   updReady(s);
@@ -514,7 +736,7 @@ function updReady(s){
   if(allR&&isHost)nextRound(s);
 }
 
-window.voteReady=async function(){
+window.voteReady = async function(){
   if(votedReady)return;votedReady=true;
   document.getElementById('readyBtn').disabled=true;
   document.getElementById('readyBtn').textContent='Esperando a los demás...';
@@ -526,9 +748,12 @@ async function nextRound(s){
   const ps=s.players||{};
   const order=s.playerOrder||Object.keys(ps).sort((a,b)=>ps[a].t-ps[b].t);
   const ni=((s.curIdx||0)+1)%order.length;
-  const words=sh([...WORDS[s.category||'famosos']]);
+  let allWords=[];
+  (s.categories||['famosos']).forEach(k=>{if(WORDS[k])allWords=[...allWords,...WORDS[k]];});
+  if(allWords.length===0)allWords=[...WORDS.famosos];
+  const words=sh(allWords);
   const scores={};order.forEach(id=>{scores[id]=0;});
-  await update(roomRef,{phase:'playing',round:(s.round||1)+1,words,wordIdx:0,curIdx:ni,tStart:Date.now(),scores,skipVotes:null,readyVotes:null});
+  await update(roomRef,{phase:'playing',round:(s.round||1)+1,words,wordIdx:0,curIdx:ni,tStart:Date.now(),scores,skipVotes:null,readyVotes:null,retryWord:null,hintIdx:0,hintShownAt:null});
 }
 </script>
 </body>
