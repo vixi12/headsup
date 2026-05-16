@@ -206,6 +206,9 @@ input[type="text"]:focus { border-color: var(--purple); }
           <div class="lbl" style="margin-top:14px;">Palabras por ronda</div>
           <div class="sel-grid" id="wordsGrid"></div>
 
+          <div class="lbl" style="margin-top:14px;">Número de rondas</div>
+          <div class="sel-grid" id="roundsGrid"></div>
+
           <div class="lbl" style="margin-top:14px;">Temática visible al que adivina</div>
           <div class="sel-grid" style="grid-template-columns:1fr 1fr;" id="showCatGrid"></div>
 
@@ -292,9 +295,10 @@ input[type="text"]:focus { border-color: var(--purple); }
       <div class="rround" id="rRound">Ronda 1</div>
       <div id="sList" style="margin-bottom:14px;"></div>
       <div class="rbox">
-        <div class="rhint">¿Todos listos para la siguiente ronda?</div>
+        <div class="rhint" id="rHint">¿Todos listos para la siguiente ronda?</div>
         <div class="rchips" id="rChips"></div>
         <button class="btn btn-p" id="readyBtn" onclick="voteReady()">Estoy listo</button>
+        <button class="btn btn-p hidden" id="newGameBtn" onclick="backToLobby()">Nueva partida →</button>
       </div>
     </div>
   </div>
@@ -458,7 +462,7 @@ let timerIv=null, lastTimerKey=null;
 let cdIv=null, cdKey=null;
 const CD_SECS=5;
 
-let selType='personas', selCats=new Set(['famosos']), selTime=60, selWords=0, selShowCat=true;
+let selType='personas', selCats=new Set(['famosos']), selTime=60, selWords=0, selRounds=0, selShowCat=true;
 let votedReady=false;
 
 /* ═══════════════════════════════════════════════
@@ -526,6 +530,16 @@ function buildWordsGrid(){
   });
 }
 
+function buildRoundsGrid(){
+  const g=document.getElementById('roundsGrid');g.innerHTML='';
+  [{v:0,l:'∞'},{v:1,l:'1'},{v:2,l:'2'},{v:3,l:'3'},{v:5,l:'5'}].forEach(o=>{
+    const d=document.createElement('div');d.className='sel-btn'+(o.v===selRounds?' on':'');
+    d.textContent=o.l;
+    d.onclick=()=>{selRounds=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');};
+    g.appendChild(d);
+  });
+}
+
 function buildShowCatGrid(){
   const g=document.getElementById('showCatGrid');g.innerHTML='';
   [{v:true,l:'Visible'},{v:false,l:'Oculta'}].forEach(o=>{
@@ -580,7 +594,7 @@ window.createRoom = async function(){
   roomRef=ref(db,'rooms/'+roomCode);
   await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,words:[],wordIdx:0,scores:{},roundTime:60,wordsLimit:0,players:{[myId]:{name:myName,color:0,t:Date.now()}}});
   document.getElementById('dCode').textContent=roomCode;
-  buildTimeGrid();buildWordsGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
+  buildTimeGrid();buildWordsGrid();buildRoundsGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
   document.getElementById('hCtrl').classList.remove('hidden');
   document.getElementById('gWait').classList.add('hidden');
   ss('sLobby');listenRoom();
@@ -677,7 +691,7 @@ window.startGame = async function(){
   const scores={};order.forEach(id=>{scores[id]=0;});
   await update(roomRef,{
     phase:'countdown',words,wordIdx:0,round:1,curIdx:0,playerOrder:order,
-    tStart:Date.now(),roundTime:selTime,wordsLimit:selWords,showCat:selShowCat,scores,
+    tStart:Date.now(),roundTime:selTime,wordsLimit:selWords,roundsLimit:selRounds,showCat:selShowCat,scores,
     skipVotes:null,readyVotes:null
   });
 };
@@ -857,7 +871,13 @@ function renderResults(s){
   ss('sResults');votedReady=false;
   document.getElementById('readyBtn').disabled=false;
   document.getElementById('readyBtn').textContent='Estoy listo';
-  document.getElementById('rRound').textContent=`Ronda ${s.round||1}`;
+  const rl=s.roundsLimit||0;
+  document.getElementById('rRound').textContent=rl>0?`Ronda ${s.round||1} de ${rl}`:`Ronda ${s.round||1}`;
+  const isLast=rl>0&&(s.round||1)>=rl;
+  document.getElementById('rHint').textContent=isLast?'¡Partida terminada!':'¿Todos listos para la siguiente ronda?';
+  document.getElementById('rChips').style.display=isLast?'none':'';
+  document.getElementById('readyBtn').classList.toggle('hidden',isLast);
+  document.getElementById('newGameBtn').classList.toggle('hidden',!(isLast&&isHost));
   const scores=s.scores||{};const ps=s.players||{};
   const sorted=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
   const list=document.getElementById('sList');list.innerHTML='';
@@ -882,7 +902,8 @@ function updReady(s){
     const d=document.createElement('div');d.className='chip'+(votes[id]?' yes':'');
     d.textContent=p.name+(votes[id]?' ✓':'');chips.appendChild(d);
   });
-  if(Object.keys(ps).length>0&&Object.keys(ps).every(id=>votes[id])&&isHost)nextRound(s);
+  const rl=s.roundsLimit||0;const isLast=rl>0&&(s.round||1)>=rl;
+  if(Object.keys(ps).length>0&&Object.keys(ps).every(id=>votes[id])&&isHost&&!isLast)nextRound(s);
 }
 window.voteReady = async function(){
   if(votedReady)return;votedReady=true;
@@ -891,6 +912,10 @@ window.voteReady = async function(){
   const u={};u[`rooms/${roomCode}/readyVotes/${myId}`]=true;
   await update(ref(db),u);
 };
+window.backToLobby = async function(){
+  await update(roomRef,{phase:'lobby',round:0,words:[],wordIdx:0,scores:{},skipVotes:null,readyVotes:null});
+};
+
 async function nextRound(s){
   const ps=s.players||{};
   const order=s.playerOrder||Object.keys(ps).sort((a,b)=>ps[a].t-ps[b].t);
