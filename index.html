@@ -203,9 +203,6 @@ input[type="text"]:focus { border-color: var(--purple); }
           <div class="lbl">Duración del turno</div>
           <div class="sel-grid" id="timeGrid"></div>
 
-          <div class="lbl" style="margin-top:14px;">Palabras por ronda</div>
-          <div class="sel-grid" id="wordsGrid"></div>
-
           <div class="lbl" style="margin-top:14px;">Número de rondas</div>
           <input type="number" id="roundsIn" min="1" max="99" placeholder="∞ ilimitadas" style="margin-bottom:0;font-family:var(--font);font-size:15px;letter-spacing:0;text-align:left;text-transform:none;padding:10px 14px;">
 
@@ -350,6 +347,26 @@ const WORDS = {
     'Napoleón Bonaparte','Cleopatra','Nelson Mandela','Martin Luther King',
     'Mahatma Gandhi','Marie Curie','Isaac Newton','Leonardo da Vinci',
     'Miguel Ángel','Mozart','Beethoven','Shakespeare',
+    // Música adicional
+    'Whitney Houston','Mariah Carey','Celine Dion','Tina Turner','Amy Winehouse',
+    'Bob Marley','Kurt Cobain','Tupac Shakur','Katy Perry','Olivia Rodrigo',
+    'Demi Lovato','Camila Cabello','Lana Del Rey','Sabrina Carpenter','Chayanne',
+    'Daddy Yankee','Maluma','Ozuna','Peso Pluma','Bizarrap','Nathy Peluso',
+    'Julio Iglesias','David Bisbal','Plácido Domingo',
+    // Actores adicionales
+    'Keanu Reeves','Johnny Depp','Robert Downey Jr.','Ryan Reynolds','Ryan Gosling',
+    'Jennifer Aniston','Angelina Jolie','Meryl Streep','Nicole Kidman','Kate Winslet',
+    'Dwayne Johnson','Hugh Jackman','Morgan Freeman','Denzel Washington',
+    'Chris Evans','Chris Hemsworth','Timothée Chalamet','Florence Pugh',
+    'Emma Watson','Emma Stone','Anne Hathaway',
+    // Deportistas adicionales
+    'Novak Djokovic','Naomi Osaka','Stephen Curry','Michael Phelps',
+    'Conor McGregor','Fernando Alonso','Lewis Hamilton','Max Verstappen',
+    'Tiger Woods','Pau Gasol','Vinicius Jr.','Pedri','Gavi','Lamine Yamal',
+    // Históricos adicionales
+    'Julio César','Alejandro Magno','Cristóbal Colón','Abraham Lincoln',
+    'Winston Churchill','Juana de Arco','Galileo Galilei','Charles Darwin',
+    'Sigmund Freud','Karl Marx','María Antonieta','Marco Polo',
   ],
   // COSAS — películas, series, géneros musicales, objetos, comida, animales, lugares
   peliculas: [
@@ -462,7 +479,7 @@ let timerIv=null, lastTimerKey=null;
 let cdIv=null, cdKey=null;
 const CD_SECS=5;
 
-let selType='personas', selCats=new Set(['famosos']), selTime=60, selWords=0, selShowCat=true;
+let selType='personas', selCats=new Set(['famosos']), selTime=60, selShowCat=true;
 let votedReady=false;
 
 /* ═══════════════════════════════════════════════
@@ -520,15 +537,6 @@ function buildTimeGrid(){
   });
 }
 
-function buildWordsGrid(){
-  const g=document.getElementById('wordsGrid');g.innerHTML='';
-  [{v:0,l:'∞'},{v:5,l:'5'},{v:10,l:'10'},{v:15,l:'15'},{v:20,l:'20'}].forEach(o=>{
-    const d=document.createElement('div');d.className='sel-btn'+(o.v===selWords?' on':'');
-    d.textContent=o.l;
-    d.onclick=()=>{selWords=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');};
-    g.appendChild(d);
-  });
-}
 
 
 function buildShowCatGrid(){
@@ -585,7 +593,7 @@ window.createRoom = async function(){
   roomRef=ref(db,'rooms/'+roomCode);
   await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,words:[],wordIdx:0,scores:{},roundTime:60,wordsLimit:0,players:{[myId]:{name:myName,color:0,t:Date.now()}}});
   document.getElementById('dCode').textContent=roomCode;
-  buildTimeGrid();buildWordsGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
+  buildTimeGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
   document.getElementById('hCtrl').classList.remove('hidden');
   document.getElementById('gWait').classList.add('hidden');
   ss('sLobby');listenRoom();
@@ -682,7 +690,7 @@ window.startGame = async function(){
   const scores={};order.forEach(id=>{scores[id]=0;});
   await update(roomRef,{
     phase:'countdown',words,wordIdx:0,round:1,curIdx:0,playerOrder:order,
-    tStart:Date.now(),roundTime:selTime,wordsLimit:selWords,roundsLimit:parseInt(document.getElementById('roundsIn').value)||0,showCat:selShowCat,scores,
+    tStart:Date.now(),roundTime:selTime,roundsLimit:parseInt(document.getElementById('roundsIn').value)||0,showCat:selShowCat,scores,
     skipVotes:null,readyVotes:null
   });
 };
