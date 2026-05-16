@@ -206,6 +206,9 @@ input[type="text"]:focus { border-color: var(--purple); }
           <div class="lbl" style="margin-top:14px;">Palabras por ronda</div>
           <div class="sel-grid" id="wordsGrid"></div>
 
+          <div class="lbl" style="margin-top:14px;">Temática visible al que adivina</div>
+          <div class="sel-grid" style="grid-template-columns:1fr 1fr;" id="showCatGrid"></div>
+
           <div class="lbl" style="margin-top:14px;">Tipo de palabras</div>
           <div class="type-grid" id="typeGrid"></div>
 
@@ -248,6 +251,7 @@ input[type="text"]:focus { border-color: var(--purple); }
   <!-- GUESSER -->
   <div class="screen hidden" id="sGuess">
     <div class="gwrap2 fi">
+      <div class="wcat" id="gCat" style="display:none;margin-bottom:4px;"></div>
       <div class="tring">
         <svg width="100" height="100" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(139,124,248,0.15)" stroke-width="7"/>
@@ -454,7 +458,7 @@ let timerIv=null, lastTimerKey=null;
 let cdIv=null, cdKey=null;
 const CD_SECS=5;
 
-let selType='personas', selCats=new Set(['famosos']), selTime=60, selWords=0;
+let selType='personas', selCats=new Set(['famosos']), selTime=60, selWords=0, selShowCat=true;
 let votedReady=false;
 
 /* ═══════════════════════════════════════════════
@@ -522,6 +526,16 @@ function buildWordsGrid(){
   });
 }
 
+function buildShowCatGrid(){
+  const g=document.getElementById('showCatGrid');g.innerHTML='';
+  [{v:true,l:'Visible'},{v:false,l:'Oculta'}].forEach(o=>{
+    const d=document.createElement('div');d.className='sel-btn'+(o.v===selShowCat?' on':'');
+    d.textContent=o.l;
+    d.onclick=()=>{selShowCat=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');};
+    g.appendChild(d);
+  });
+}
+
 function buildTypeGrid(){
   const g=document.getElementById('typeGrid');g.innerHTML='';
   [{v:'personas',l:'Personas'},{v:'cosas',l:'Cosas'},{v:'ambas',l:'Ambas'}].forEach(o=>{
@@ -566,7 +580,7 @@ window.createRoom = async function(){
   roomRef=ref(db,'rooms/'+roomCode);
   await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,words:[],wordIdx:0,scores:{},roundTime:60,wordsLimit:0,players:{[myId]:{name:myName,color:0,t:Date.now()}}});
   document.getElementById('dCode').textContent=roomCode;
-  buildTimeGrid();buildWordsGrid();buildTypeGrid();rebuildCats();
+  buildTimeGrid();buildWordsGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
   document.getElementById('hCtrl').classList.remove('hidden');
   document.getElementById('gWait').classList.add('hidden');
   ss('sLobby');listenRoom();
@@ -663,7 +677,7 @@ window.startGame = async function(){
   const scores={};order.forEach(id=>{scores[id]=0;});
   await update(roomRef,{
     phase:'countdown',words,wordIdx:0,round:1,curIdx:0,playerOrder:order,
-    tStart:Date.now(),roundTime:selTime,wordsLimit:selWords,scores,
+    tStart:Date.now(),roundTime:selTime,wordsLimit:selWords,showCat:selShowCat,scores,
     skipVotes:null,readyVotes:null
   });
 };
@@ -682,6 +696,8 @@ function renderPlaying(s){
   document.getElementById('wCat').textContent=catKey?(CAT_META[catKey].name.toUpperCase()):'';
   document.getElementById('wTxt').textContent=word;
   const amIGuesser=curId===myId;
+  const gCat=document.getElementById('gCat');
+  if(gCat){gCat.textContent=s.showCat&&catKey?(CAT_META[catKey].name.toUpperCase()):'';gCat.style.display=(s.showCat&&amIGuesser&&catKey)?'':'none';}
   document.getElementById('skipBtn').style.display=(isHost&&!amIGuesser)?'flex':'none';
   ss(amIGuesser?'sGuess':'sClues');
   const timerKey=`${s.tStart}_${s.wordIdx}_${s.curIdx}`;
