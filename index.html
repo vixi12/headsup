@@ -149,7 +149,7 @@ input[type="text"]:focus { border-color: var(--purple); }
 </head>
 <body>
 <div id="app">
-  <div class="vtag">v1.3.2</div>
+  <div class="vtag">v1.3.3</div>
   <div class="rtag hidden" id="rtag">RONDA 1</div>
   <div class="glow g1"></div>
   <div class="glow g2"></div>
@@ -1008,9 +1008,9 @@ async function nextRound(s){
   const order=s.playerOrder||Object.keys(ps).sort((a,b)=>ps[a].t-ps[b].t);
   const nextIdx=((s.curIdx||0)+1)%order.length;
   const words=sh([...(s.words||[])]);
-  const scores={};order.forEach(id=>{scores[id]=0;});
+  // NO se resetean los scores — se acumulan a lo largo de toda la partida
   lastTimerKey=null;
-  await update(roomRef,{phase:'countdown',round:(s.round||1)+1,words,wordIdx:0,curIdx:nextIdx,tStart:Date.now(),scores,skipVotes:null,readyVotes:null,roundTurns:0});
+  await update(roomRef,{phase:'countdown',round:(s.round||1)+1,words,wordIdx:0,curIdx:nextIdx,tStart:Date.now(),skipVotes:null,readyVotes:null,roundTurns:0});
 }
 </script>
 </body>
