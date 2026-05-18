@@ -147,7 +147,7 @@ input[type="text"]:focus { border-color: var(--purple); }
 </head>
 <body>
 <div id="app">
-  <div class="vtag">v1.2.0</div>
+  <div class="vtag">v1.3.0</div>
   <div class="glow g1"></div>
   <div class="glow g2"></div>
 
@@ -384,6 +384,13 @@ const WORDS = {
     'Piratas del Caribe','Misión Imposible','John Wick','James Bond 007',
     'Capitán América','Black Panther','Transformers','Scream',
     'El Gran Gatsby','Amélie','Braveheart','Ghost','Pretty Woman',
+    'El laberinto del fauno','REC','El orfanato','Ocho apellidos vascos','Campeones',
+    'Mar adentro','Los otros','Abre los ojos','Torrente',
+    'Ciudadano Kane','Psicosis','Lo que el viento se llevó','2001: Una odisea del espacio',
+    'Blade Runner','ET','Cantando bajo la lluvia','La vida de Pi',
+    'Troya','300','El último samurái','Moulin Rouge','Chicago','Los Miserables',
+    'American Pie','Superbad','It','Get Out',
+    'La sirenita','Aladín','La bella y la bestia','Mulan','Pocahontas','Bambi',
   ],
   series: [
     'Breaking Bad','Game of Thrones','Friends','The Office','Stranger Things',
@@ -399,6 +406,11 @@ const WORDS = {
     'La que se avecina','El internado','House','Mindhunter','Criminal Minds',
     'Seinfeld','Community','Downton Abbey','Arcane','Invincible','Yellowstone',
     'Vikingos','The Walking Dead','Malcolm','Merlí','Física o Química',
+    'Rick y Morty','Futurama','Padre de familia','Bojack Horseman',
+    'Chernobyl','True Detective','Fleabag','Killing Eve','Westworld','Tiger King',
+    'Parks and Recreation','Barry','24','Homeland',
+    'Aquí no hay quien viva','Sky Rojo','Paquita Salas','Hierro','Fariña',
+    'The Haunting of Hill House','Severance','White Lotus','Abbott Elementary',
   ],
   musica: [
     'Rock','Pop','Reggaeton','Jazz','Blues','Hip-hop',
@@ -407,6 +419,9 @@ const WORDS = {
     'Bachata','Cumbia','Punk','Country','Electrónica','Clásica',
     'R&B','Indie','Folk','Grunge','Rap','Bolero','Merengue',
     'Samba','Bossa nova','Gospel','Techno','House','Emo','Ska','New wave',
+    'Swing','Mambo','Cha-cha-chá','Pasodoble','Sevillanas','Joropo',
+    'Norteño','Corrido','Afrobeat','Dubstep','Trance','Ambient',
+    'Lo-fi','EDM','Trip-hop','Alternative','Shoegaze','Britpop',
   ],
   objetos: [
     'Silla','Nevera','Televisión','Teléfono','Ordenador','Mesa',
@@ -418,6 +433,11 @@ const WORDS = {
     'Bolígrafo','Mochila','Gafas de sol','Sombrero','Monopatín','Patines',
     'Martillo','Destornillador','Mechero','Tienda de campaña','Brújula','Drone',
     'Impresora','Calculadora','Cuaderno','Cinturón','Hacha','Vela',
+    'Sartén','Olla','Cafetera','Tostadora','Batidora','Exprimidor',
+    'Vestido','Abrigo','Corbata','Gorra','Zapatillas','Bufanda',
+    'Sierra','Taladro','Llave inglesa','Alicates',
+    'Bate de béisbol','Guantes de boxeo','Tabla de surf','Esquís','Snowboard',
+    'Abanico','Carta','Cartera','Paraguas','Candado',
   ],
   comida: [
     'Pizza','Sushi','Hamburguesa','Paella','Tortilla española',
@@ -429,6 +449,11 @@ const WORDS = {
     'Flan','Magdalena','Tortitas','Nachos','Patatas fritas','Palomitas',
     'Hot dog','Kebab','Curry','Ceviche','Guacamole','Empanada',
     'Gambas','Albóndigas','Queso','Mantequilla','Salchichón','Sobrasada',
+    'Fabada','Cocido madrileño','Patatas bravas','Pan con tomate','Pisto','Migas',
+    'Huevos rotos','Bocadillo de calamares',
+    'Shawarma','Falafel','Pad thai','Dim sum','Burrito','Quesadilla','Tamales','Arepas',
+    'Tiramisú','Macaron','Mochi','Crema catalana','Arroz con leche','Turrón','Torrijas',
+    'Sangría','Mojito','Margarita','Horchata','Sidra','Vermut',
   ],
   animales: [
     'Perro','Gato','León','Elefante','Jirafa','Delfín','Ballena',
@@ -439,6 +464,11 @@ const WORDS = {
     'Ardilla','Murciélago','Conejo','Puma','Jaguar','Guepardo',
     'Camaleón','Tortuga','Piraña','Avestruz','Tucán','Cisne',
     'Búho','Cuervo','Colibrí','Dingo','Suricata','Nutria',
+    'Vaca','Caballo','Cerdo','Oveja','Cabra','Gallina','Pato','Burro',
+    'Foca','Morsa','Narval','Mantarraya','Caballito de mar','Erizo de mar',
+    'Rana','Salamandra','Axolote','Libélula','Araña','Escorpión',
+    'Gaviota','Paloma','Cigüeña','Garza','Quetzal','Pájaro carpintero',
+    'Ornitorrinco','Tapir','Pangolín','Okapi','Wombat',
   ],
   lugares: [
     'Torre Eiffel','Coliseo Romano','Machu Picchu','Gran Muralla China',
@@ -452,6 +482,11 @@ const WORDS = {
     'Atenas','Estambul','El Cairo','Singapur','Hong Kong','Bangkok','Bali',
     'Hawái','Los Ángeles','Chicago','Edimburgo','Viena','Seúl','Shanghái',
     'Monte Everest','Gran Cañón','Islas Galápagos','Maldivas','Antártida',
+    'El Vaticano','Versalles','Kremlin','Chichen Itzá','Teotihuacán',
+    'Pompeya','La Acrópolis','Buckingham Palace','Isla de Pascua',
+    'Marrakech','Dubrovnik','Santorini','Ibiza','Tenerife',
+    'Moscú','San Petersburgo','Delhi','Mumbai','São Paulo',
+    'Lima','Bogotá','Nairobi','Dubái','Patagonia','Fiordos noruegos','Serengeti',
   ],
   lol: [
     'Aatrox','Ahri','Akali','Alistar','Amumu','Anivia','Annie',
