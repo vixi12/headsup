@@ -55,7 +55,14 @@ input[type="text"]:focus { border-color: var(--purple); }
 .badge { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 600; background: var(--purple-dim); color: var(--purple); border: 0.5px solid var(--purple-border); }
 
 /* SETTINGS */
-.settings-block { background: var(--surface2); border-radius: 14px; padding: 14px; border: 0.5px solid var(--border); margin-bottom: 12px; }
+.settings-block { background: var(--surface2); border-radius: 14px; padding: 14px; border: 0.5px solid var(--border); margin-bottom: 12px; transition: opacity 0.2s; }
+.settings-block.readonly { opacity: 0.7; pointer-events: none; position: relative; }
+.settings-block.readonly::after { content: ''; position: absolute; inset: 0; background: transparent; cursor: not-allowed; border-radius: 14px; }
+.rounds-wrap { display: flex; align-items: center; gap: 12px; background: var(--bg); border: 0.5px solid var(--border2); border-radius: 10px; padding: 8px 12px; }
+.rounds-wrap input { width: 64px; background: var(--surface2); border: 0.5px solid var(--border); border-radius: 8px; padding: 7px 6px; color: var(--text); font-family: var(--mono); font-size: 16px; text-align: center; margin: 0; letter-spacing: 0; text-transform: none; outline: none; -moz-appearance: textfield; }
+.rounds-wrap input::-webkit-outer-spin-button, .rounds-wrap input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.rounds-wrap input:focus { border-color: var(--purple); }
+.rounds-hint { font-size: 13px; color: var(--muted); flex: 1; }
 .sel-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
 .sel-btn { background: var(--bg); border: 0.5px solid var(--border2); border-radius: 10px; padding: 8px 4px; text-align: center; cursor: pointer; transition: all 0.15s; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--text); }
 .sel-btn:hover { border-color: var(--purple-border); }
@@ -149,7 +156,7 @@ input[type="text"]:focus { border-color: var(--purple); }
 </head>
 <body>
 <div id="app">
-  <div class="vtag">v1.4.0</div>
+  <div class="vtag">v1.4.1</div>
   <div class="rtag hidden" id="rtag">RONDA 1</div>
   <div class="glow g1"></div>
   <div class="glow g2"></div>
@@ -180,11 +187,11 @@ input[type="text"]:focus { border-color: var(--purple); }
     <div class="card">
       <span class="lbl">Tu nombre</span>
       <input type="text" class="name-in" id="pName" placeholder="¿Cómo te llamas?" maxlength="16" style="margin-bottom:18px;">
-      <button class="btn btn-p" onclick="createRoom()" style="margin-bottom:10px;">Crear sala</button>
-      <div class="divider">o únete con un código</div>
       <span class="lbl">Código de sala</span>
       <input type="text" id="joinCode" placeholder="XXXX" maxlength="4">
-      <button class="btn btn-s" onclick="joinRoom()">Entrar →</button>
+      <button class="btn btn-p" onclick="joinRoom()" style="margin-bottom:10px;">Entrar →</button>
+      <div class="divider">o crea una nueva</div>
+      <button class="btn btn-s" onclick="createRoom()">Crear sala</button>
     </div>
     <button class="btn btn-ghost" onclick="showCfg()" style="margin-top:14px;">Firebase</button>
   </div>
@@ -200,30 +207,31 @@ input[type="text"]:focus { border-color: var(--purple); }
       <div class="sec">Jugadores (<span id="pCnt">1</span>/8)</div>
       <div class="plist" id="pList"></div>
 
-      <div id="hCtrl">
-        <div class="sec" style="margin-top:12px;">Configuración</div>
-        <div class="settings-block">
-          <div class="lbl">Duración del turno</div>
-          <div class="sel-grid" id="timeGrid"></div>
+      <div class="sec" id="cfgSec" style="margin-top:12px;">Configuración</div>
+      <div class="settings-block" id="settingsBlock">
+        <div class="lbl">Duración del turno</div>
+        <div class="sel-grid" id="timeGrid"></div>
 
-          <div class="lbl" style="margin-top:14px;">Número de rondas</div>
-          <input type="number" id="roundsIn" min="1" max="99" placeholder="∞ ilimitadas" style="margin-bottom:0;font-family:var(--font);font-size:15px;letter-spacing:0;text-align:left;text-transform:none;padding:10px 14px;">
-
-          <div class="lbl" style="margin-top:14px;">Temática visible al que adivina</div>
-          <div class="sel-grid" style="grid-template-columns:1fr 1fr;" id="showCatGrid"></div>
-
-          <div class="lbl" style="margin-top:14px;">Tipo de palabras</div>
-          <div class="type-grid" id="typeGrid"></div>
-
-          <div id="catSection">
-            <div class="lbl">Categorías</div>
-            <div class="cat-grid" id="catGrid"></div>
-          </div>
+        <div class="lbl" style="margin-top:14px;">Número de rondas</div>
+        <div class="rounds-wrap">
+          <input type="number" id="roundsIn" min="1" max="99" placeholder="∞">
+          <span class="rounds-hint" id="roundsHint">∞ ilimitadas</span>
         </div>
-        <button class="btn btn-p" onclick="startGame()">Empezar partida</button>
+
+        <div class="lbl" style="margin-top:14px;">Temática visible al que adivina</div>
+        <div class="sel-grid" style="grid-template-columns:1fr 1fr;" id="showCatGrid"></div>
+
+        <div class="lbl" style="margin-top:14px;">Tipo de palabras</div>
+        <div class="type-grid" id="typeGrid"></div>
+
+        <div id="catSection">
+          <div class="lbl">Categorías</div>
+          <div class="cat-grid" id="catGrid"></div>
+        </div>
       </div>
-      <div id="gWait" class="hidden" style="text-align:center;padding:24px;color:var(--muted);font-size:14px;">
-        Esperando a que el host empiece...
+      <button class="btn btn-p hidden" id="startBtn" onclick="startGame()">Empezar partida</button>
+      <div id="gWait" class="hidden" style="text-align:center;padding:18px 12px;color:var(--muted);font-size:13px;">
+        🔒 Solo el host puede editar la configuración
       </div>
     </div>
   </div>
@@ -597,24 +605,47 @@ window.showCfg=()=>document.getElementById('cfgM').classList.remove('hidden');
 /* ═══════════════════════════════════════════════
    LOBBY UI
 ═══════════════════════════════════════════════ */
+let applyingRemote=false;
+function saveSettings(){
+  if(!isHost||!roomRef||applyingRemote)return;
+  const rounds=parseInt(document.getElementById('roundsIn').value)||0;
+  update(roomRef,{lobbyConfig:{time:selTime,rounds,showCat:selShowCat,type:selType,cats:[...selCats]}});
+}
+function applyRemoteSettings(cfg){
+  if(!cfg||isHost)return;
+  applyingRemote=true;
+  selTime=cfg.time||60;
+  selShowCat=cfg.showCat!==false;
+  selType=cfg.type||'personas';
+  selCats=new Set(cfg.cats||['famosos']);
+  const rIn=document.getElementById('roundsIn');
+  if(rIn)rIn.value=cfg.rounds>0?cfg.rounds:'';
+  updateRoundsHint();
+  buildTimeGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
+  applyingRemote=false;
+}
+function updateRoundsHint(){
+  const v=parseInt(document.getElementById('roundsIn').value)||0;
+  const h=document.getElementById('roundsHint');
+  if(h)h.textContent=v>0?`${v} ${v===1?'ronda':'rondas'}`:'∞ ilimitadas';
+}
+
 function buildTimeGrid(){
   const g=document.getElementById('timeGrid');g.innerHTML='';
   [{v:30,l:'30s'},{v:60,l:'60s'},{v:90,l:'90s'},{v:120,l:'2min'},{v:180,l:'3min'}].forEach(o=>{
     const d=document.createElement('div');d.className='sel-btn'+(o.v===selTime?' on':'');
     d.textContent=o.l;
-    d.onclick=()=>{selTime=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');};
+    d.onclick=()=>{selTime=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');saveSettings();};
     g.appendChild(d);
   });
 }
-
-
 
 function buildShowCatGrid(){
   const g=document.getElementById('showCatGrid');g.innerHTML='';
   [{v:true,l:'Visible'},{v:false,l:'Oculta'}].forEach(o=>{
     const d=document.createElement('div');d.className='sel-btn'+(o.v===selShowCat?' on':'');
     d.textContent=o.l;
-    d.onclick=()=>{selShowCat=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');};
+    d.onclick=()=>{selShowCat=o.v;g.querySelectorAll('.sel-btn').forEach(b=>b.classList.remove('on'));d.classList.add('on');saveSettings();};
     g.appendChild(d);
   });
 }
@@ -624,7 +655,7 @@ function buildTypeGrid(){
   [{v:'personas',l:'Personas'},{v:'cosas',l:'Cosas'},{v:'ambas',l:'Ambas'}].forEach(o=>{
     const d=document.createElement('div');d.className='type-btn'+(o.v===selType?' on':'');
     d.textContent=o.l;
-    d.onclick=()=>{selType=o.v;buildTypeGrid();rebuildCats();};
+    d.onclick=()=>{selType=o.v;buildTypeGrid();rebuildCats();saveSettings();};
     g.appendChild(d);
   });
 }
@@ -642,16 +673,20 @@ function buildCatGrid(validKeys){
   const all=document.createElement('div');
   all.className='cbt all-btn'+(selCats.size===keys.length?' on':'');
   all.innerHTML=`<div class="cn">Todas</div>`;
-  all.onclick=()=>{selCats=(selCats.size===keys.length)?new Set([keys[0]]):new Set(keys);buildCatGrid(keys);};
+  all.onclick=()=>{selCats=(selCats.size===keys.length)?new Set([keys[0]]):new Set(keys);buildCatGrid(keys);saveSettings();};
   g.appendChild(all);
   keys.forEach(k=>{
     const m=CAT_META[k];const d=document.createElement('div');
     d.className='cbt'+(selCats.has(k)?' on':'');
     d.innerHTML=`<div class="cn">${m.name}</div><div class="cc">${WORDS[k].length} palabras</div>`;
-    d.onclick=()=>{if(selCats.has(k)){if(selCats.size>1)selCats.delete(k);}else selCats.add(k);buildCatGrid(keys);};
+    d.onclick=()=>{if(selCats.has(k)){if(selCats.size>1)selCats.delete(k);}else selCats.add(k);buildCatGrid(keys);saveSettings();};
     g.appendChild(d);
   });
 }
+(function attachRoundsInput(){
+  const rIn=document.getElementById('roundsIn');
+  if(rIn)rIn.addEventListener('input',()=>{updateRoundsHint();saveSettings();});
+})();
 
 /* ═══════════════════════════════════════════════
    CREATE / JOIN
@@ -664,9 +699,11 @@ window.createRoom = async function(){
   await set(roomRef,{host:myId,phase:'lobby',round:0,curIdx:0,words:[],wordIdx:0,scores:{},roundTime:60,wordsLimit:0,players:{[myId]:{name:myName,color:0,t:Date.now()}}});
   document.getElementById('dCode').textContent=roomCode;
   buildTimeGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
-  document.getElementById('hCtrl').classList.remove('hidden');
+  document.getElementById('settingsBlock').classList.remove('readonly');
+  document.getElementById('startBtn').classList.remove('hidden');
   document.getElementById('gWait').classList.add('hidden');
   ss('sLobby');listenRoom();
+  saveSettings();
 };
 
 window.joinRoom = async function(){
@@ -682,7 +719,9 @@ window.joinRoom = async function(){
   const u={};u[`rooms/${code}/players/${myId}`]={name:myName,color:ci,t:Date.now()};
   await update(ref(db),u);
   document.getElementById('dCode').textContent=code;
-  document.getElementById('hCtrl').classList.add('hidden');
+  buildTimeGrid();buildShowCatGrid();buildTypeGrid();rebuildCats();
+  document.getElementById('settingsBlock').classList.add('readonly');
+  document.getElementById('startBtn').classList.add('hidden');
   document.getElementById('gWait').classList.remove('hidden');
   ss('sLobby');listenRoom();
 };
@@ -699,6 +738,7 @@ function listenRoom(){
 ═══════════════════════════════════════════════ */
 function render(s){
   updLobby(s);
+  if(!isHost&&s.phase==='lobby'&&s.lobbyConfig)applyRemoteSettings(s.lobbyConfig);
   if(s.phase!=='playing')stopTimer();
   if(s.phase!=='countdown')stopCountdown();
   const rtag=document.getElementById('rtag');
@@ -966,7 +1006,9 @@ function renderResults(s){
   document.getElementById('readyBtn').classList.toggle('hidden',isLast);
   document.getElementById('newGameBtn').classList.toggle('hidden',!(isLast&&isHost));
   const scores=s.scores||{};const ps=s.players||{};
-  const sorted=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  // Filtra a los jugadores actuales y rellena 0 si no tienen score
+  // (evita mostrar scores stale de partidas anteriores con jugadores distintos)
+  const sorted=Object.keys(ps).map(id=>[id,scores[id]||0]).sort((a,b)=>b[1]-a[1]);
   const list=document.getElementById('sList');list.innerHTML='';
   ['🥇','🥈','🥉'].forEach((m,i)=>{
     if(!sorted[i])return;
