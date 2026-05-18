@@ -758,7 +758,7 @@ window.startGame = async function(){
   await update(roomRef,{
     phase:'countdown',words,wordIdx:0,round:1,curIdx:0,playerOrder:order,
     tStart:Date.now(),roundTime:selTime,roundsLimit:parseInt(document.getElementById('roundsIn').value)||0,showCat:selShowCat,scores,
-    skipVotes:null,readyVotes:null
+    skipVotes:null,readyVotes:null,roundTurns:0
   });
 };
 
@@ -816,9 +816,10 @@ window.markCorrect = async function(){
   const scores={...gs.scores};scores[curId]=(scores[curId]||0)+1;
   const nextIdx=((gs.curIdx||0)+1)%order.length;
   const nextWordIdx=(gs.wordIdx||0)+1;
-  if(limitReached(nextWordIdx,gs)){await goRes(scores);return;}
+  const roundTurns=(gs.roundTurns||0)+1;
+  if(limitReached(nextWordIdx,gs)||roundTurns>=order.length){await goRes(scores);return;}
   lastTimerKey=null;
-  await update(roomRef,{phase:'between',scores,curIdx:nextIdx,wordIdx:nextWordIdx,skipVotes:null});
+  await update(roomRef,{phase:'between',scores,curIdx:nextIdx,wordIdx:nextWordIdx,skipVotes:null,roundTurns});
   toast('+1 para '+(gs.players||{})[curId]?.name);
 };
 
@@ -830,7 +831,8 @@ async function endTurn(){
   const nextIdx=((gs.curIdx||0)+1)%order.length;
   // wordIdx queda apuntando a la palabra perdida para mostrarla en reveal.
   // startNextTurn la avanzará al empezar el siguiente turno.
-  await update(roomRef,{phase:'reveal',curIdx:nextIdx,skipVotes:null});
+  const roundTurns=(gs.roundTurns||0)+1;
+  await update(roomRef,{phase:'reveal',curIdx:nextIdx,skipVotes:null,roundTurns});
 }
 
 /* ═══════════════════════════════════════════════
@@ -852,18 +854,24 @@ function renderReveal(s){
     tag.textContent='¡Correcto!';tag.style.color='var(--green)';
     lbl.classList.add('hidden');wrd.classList.add('hidden');
   }
-  document.getElementById('rvNext').innerHTML=`Siguiente: <strong>${nextP.name||'?'}</strong>`;
+  const roundTurns=s.roundTurns||0;
+  const orderLen=(s.playerOrder||[]).length;
+  const isRoundEnd=orderLen>0&&roundTurns>=orderLen;
+  document.getElementById('rvNext').innerHTML=isRoundEnd
+    ?'<strong>Fin de la ronda</strong>'
+    :`Siguiente: <strong>${nextP.name||'?'}</strong>`;
   const amINext=nextId===myId;
+  document.getElementById('rvBtn').textContent=isRoundEnd?'Ver resultados →':'Empezar mi turno →';
   document.getElementById('rvBtn').classList.toggle('hidden',!amINext);
   document.getElementById('rvWait').classList.toggle('hidden',amINext);
   ss('sReveal');
 }
 
 window.startNextTurn = async function(){
-  // reveal (timeout): wordIdx apunta a la palabra perdida → avanzar +1
-  // between (correcto): wordIdx ya fue avanzado por markCorrect → usar tal cual
   const nw=gs.phase==='reveal'?(gs.wordIdx||0)+1:(gs.wordIdx||0);
-  if(limitReached(nw,gs)){await goRes(gs.scores);return;}
+  const roundTurns=gs.roundTurns||0;
+  const orderLen=(gs.playerOrder||[]).length;
+  if(limitReached(nw,gs)||( orderLen>0&&roundTurns>=orderLen)){await goRes(gs.scores);return;}
   lastTimerKey=null;
   await update(roomRef,{phase:'countdown',wordIdx:nw,tStart:Date.now()});
 };
@@ -918,9 +926,10 @@ function renderSkip(s){
     if(isHost){
       const nextIdx=((gs.curIdx||0)+1)%order.length;
       const nw=(gs.wordIdx||0)+1;
-      if(limitReached(nw,gs)){goRes(gs.scores);return;}
+      const roundTurns=(gs.roundTurns||0)+1;
+      if(limitReached(nw,gs)||roundTurns>=order.length){goRes(gs.scores);return;}
       lastTimerKey=null;
-      update(roomRef,{phase:'countdown',curIdx:nextIdx,wordIdx:nw,tStart:Date.now(),skipVotes:null});
+      update(roomRef,{phase:'countdown',curIdx:nextIdx,wordIdx:nw,tStart:Date.now(),skipVotes:null,roundTurns});
     }
   }
 }
@@ -989,7 +998,7 @@ async function nextRound(s){
   const words=sh([...(s.words||[])]);
   const scores={};order.forEach(id=>{scores[id]=0;});
   lastTimerKey=null;
-  await update(roomRef,{phase:'countdown',round:(s.round||1)+1,words,wordIdx:0,curIdx:nextIdx,tStart:Date.now(),scores,skipVotes:null,readyVotes:null});
+  await update(roomRef,{phase:'countdown',round:(s.round||1)+1,words,wordIdx:0,curIdx:nextIdx,tStart:Date.now(),scores,skipVotes:null,readyVotes:null,roundTurns:0});
 }
 </script>
 </body>
