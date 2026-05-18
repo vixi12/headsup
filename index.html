@@ -141,13 +141,16 @@ input[type="text"]:focus { border-color: var(--purple); }
 .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 0.5px solid var(--border2); border-radius: 12px; padding: 11px 20px; font-size: 13px; z-index: 100; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; }
 .toast.hidden { opacity: 0; }
 .vtag { position: fixed; top: 6px; left: 8px; font-size: 9px; color: var(--hint); font-family: var(--mono); letter-spacing: 0.1em; z-index: 150; pointer-events: none; opacity: 0.6; }
+.rtag { position: fixed; top: 6px; right: 8px; font-size: 10px; color: var(--purple); font-family: var(--mono); letter-spacing: 0.12em; z-index: 150; pointer-events: none; background: var(--purple-dim); border: 0.5px solid var(--purple-border); border-radius: 8px; padding: 3px 9px; font-weight: 600; }
+.rtag.hidden { display: none; }
 @keyframes fi { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 .fi { animation: fi 0.3s ease forwards; }
 </style>
 </head>
 <body>
 <div id="app">
-  <div class="vtag">v1.3.0</div>
+  <div class="vtag">v1.3.2</div>
+  <div class="rtag hidden" id="rtag">RONDA 1</div>
   <div class="glow g1"></div>
   <div class="glow g2"></div>
 
@@ -698,6 +701,15 @@ function render(s){
   updLobby(s);
   if(s.phase!=='playing')stopTimer();
   if(s.phase!=='countdown')stopCountdown();
+  const rtag=document.getElementById('rtag');
+  const inGame=['countdown','playing','reveal','between','skipping'].includes(s.phase);
+  if(rtag){
+    if(inGame){
+      const rl=s.roundsLimit||0;
+      rtag.textContent=rl>0?`RONDA ${s.round||1}/${rl}`:`RONDA ${s.round||1}`;
+      rtag.classList.remove('hidden');
+    }else rtag.classList.add('hidden');
+  }
   if(s.phase==='lobby')ss('sLobby');
   else if(s.phase==='countdown')renderCountdown(s);
   else if(s.phase==='playing')renderPlaying(s);
