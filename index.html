@@ -156,7 +156,7 @@ input[type="text"]:focus { border-color: var(--purple); }
 </head>
 <body>
 <div id="app">
-  <div class="vtag">v1.4.2</div>
+  <div class="vtag">v1.5.0</div>
   <div class="rtag hidden" id="rtag">RONDA 1</div>
   <div class="glow g1"></div>
   <div class="glow g2"></div>
@@ -378,6 +378,26 @@ const WORDS = {
     'Julio César','Alejandro Magno','Cristóbal Colón','Abraham Lincoln',
     'Winston Churchill','Juana de Arco','Galileo Galilei','Charles Darwin',
     'Sigmund Freud','Karl Marx','María Antonieta','Marco Polo',
+    // Hip-hop / Rap
+    'Snoop Dogg','Jay-Z','50 Cent','Kendrick Lamar','Travis Scott','Lil Wayne',
+    'Pharrell Williams','J Cole','Future','21 Savage',
+    // Más músicos
+    'Sting','Phil Collins','George Michael','Stevie Wonder','Frank Sinatra',
+    'Joaquín Sabina','Joan Manuel Serrat','Manuel Carrasco','Raphael','Estopa',
+    // Más deportistas
+    'Diego Maradona','Pelé','Zinedine Zidane','Ronaldinho','David Beckham',
+    'Sergio Ramos','Iker Casillas','Xavi Hernández','Sergio Busquets','Andy Murray',
+    'Andre Agassi','Steffi Graf','Jannik Sinner','Iga Świątek',
+    // Realeza y celebridades
+    'Reina Isabel II','Princesa Diana','Príncipe Harry','Príncipe William',
+    'Kate Middleton','Meghan Markle','Kim Kardashian','Kylie Jenner',
+    'Kendall Jenner','Bella Hadid','Gigi Hadid','Cara Delevingne',
+    // Directores y tech
+    'Steven Spielberg','Quentin Tarantino','Christopher Nolan','Martin Scorsese',
+    'Pedro Almodóvar','Tim Burton','Jeff Bezos','Larry Page',
+    // Actores adicionales
+    'Sandra Bullock','Julia Roberts','Halle Berry','Gal Gadot','Margot Robbie',
+    'Tom Cruise','George Clooney','Matt Damon','Mark Wahlberg','Adam Sandler',
   ],
   // COSAS — películas, series, géneros musicales, objetos, comida, animales, lugares
   peliculas: [
@@ -402,6 +422,14 @@ const WORDS = {
     'Troya','300','El último samurái','Moulin Rouge','Chicago','Los Miserables',
     'American Pie','Superbad','It','Get Out',
     'La sirenita','Aladín','La bella y la bestia','Mulan','Pocahontas','Bambi',
+    'La Cenicienta','La Dama y el Vagabundo','Tarzán','Wreck-It Ralph',
+    'Cars','Buscando a Dory','Brave','Vaiana','Soul','Luca',
+    'Mad Max','Terminator','Rambo','Predator','Robocop','Alien: el octavo pasajero',
+    'Volver','Todo sobre mi madre','Hable con ella','La isla mínima','Carmen',
+    'Spiderman: No Way Home','The Batman','Top Gun: Maverick','Avatar 2',
+    'Everything Everywhere All at Once','La La Land','Whiplash','Birdman',
+    'La Naranja Mecánica','El Apartamento','Sonrisas y lágrimas','Ben-Hur',
+    'Memento','Sexto sentido','Vainilla Sky','Mulholland Drive',
   ],
   series: [
     'Breaking Bad','Game of Thrones','Friends','The Office','Stranger Things',
@@ -422,6 +450,19 @@ const WORDS = {
     'Parks and Recreation','Barry','24','Homeland',
     'Aquí no hay quien viva','Sky Rojo','Paquita Salas','Hierro','Fariña',
     'The Haunting of Hill House','Severance','White Lotus','Abbott Elementary',
+    // Más españolas
+    'El Ministerio del Tiempo','Águila Roja','Isabel','La Catedral del Mar',
+    'Hospital Central','Compañeros','Médico de familia','El barco',
+    'Aquí no hay quien viva','Los Serrano','La que se avecina',
+    // Anime
+    'Naruto','Dragon Ball','One Piece','Attack on Titan','Death Note',
+    'My Hero Academia','Demon Slayer','Pokémon','Sailor Moon','Hunter x Hunter',
+    // Reality / variedad
+    'MasterChef','La Voz','Operación Triunfo','Gran Hermano','Survivor',
+    'La Isla de las Tentaciones','First Dates','Pasapalabra',
+    // Más populares
+    'CSI','Mr. Robot','Banshee','True Blood','Suits','How to Get Away with Murder',
+    'Vis a vis','Stargate','Boardwalk Empire','Mad Men',
   ],
   musica: [
     'Rock','Pop','Reggaeton','Jazz','Blues','Hip-hop',
@@ -433,6 +474,9 @@ const WORDS = {
     'Swing','Mambo','Cha-cha-chá','Pasodoble','Sevillanas','Joropo',
     'Norteño','Corrido','Afrobeat','Dubstep','Trance','Ambient',
     'Lo-fi','EDM','Trip-hop','Alternative','Shoegaze','Britpop',
+    'Vals','Polka','Bluegrass','Calypso','Dancehall','Hardcore',
+    'Garage','Drum and bass','Cuarteto','Rumba','Boogaloo','Vallenato',
+    'Soft rock','Hard rock','Death metal','Black metal','Thrash metal','Nu metal',
   ],
   objetos: [
     'Silla','Nevera','Televisión','Teléfono','Ordenador','Mesa',
@@ -449,6 +493,18 @@ const WORDS = {
     'Sierra','Taladro','Llave inglesa','Alicates',
     'Bate de béisbol','Guantes de boxeo','Tabla de surf','Esquís','Snowboard',
     'Abanico','Carta','Cartera','Paraguas','Candado',
+    // Cocina y hogar
+    'Cuchillo','Tenedor','Cuchara','Plato','Taza','Vaso','Jarrón','Cortina',
+    'Alfombra','Almohada','Sábana','Manta','Tabla de cortar','Rallador',
+    // Aseo
+    'Cepillo de dientes','Pasta de dientes','Champú','Jabón','Toalla','Peine',
+    // Oficina
+    'Grapadora','Carpeta','Regla','Goma de borrar','Sello','Pizarra blanca',
+    // Tecnología
+    'Webcam','USB','Disco duro','CD','DVD','Vinilo','Tableta','Smartwatch',
+    'Cargador','Router','Mando a distancia','Consola',
+    // Más
+    'Casco','Aletas','Tabla de skate','Pala','Rastrillo','Manguera',
   ],
   comida: [
     'Pizza','Sushi','Hamburguesa','Paella','Tortilla española',
@@ -465,6 +521,19 @@ const WORDS = {
     'Shawarma','Falafel','Pad thai','Dim sum','Burrito','Quesadilla','Tamales','Arepas',
     'Tiramisú','Macaron','Mochi','Crema catalana','Arroz con leche','Turrón','Torrijas',
     'Sangría','Mojito','Margarita','Horchata','Sidra','Vermut',
+    // Verduras
+    'Tomate','Lechuga','Cebolla','Ajo','Pimiento','Zanahoria','Patata',
+    'Brócoli','Calabacín','Berenjena','Calabaza','Espinacas','Champiñón',
+    // Frutas
+    'Manzana','Plátano','Naranja','Limón','Uva','Fresa','Cereza','Pera',
+    'Melocotón','Kiwi','Mango','Coco','Granada','Frambuesa','Arándano',
+    // Carnes y pescados
+    'Pollo','Ternera','Cordero','Salmón','Atún','Sardina','Mejillones',
+    'Almejas','Langosta','Bogavante',
+    // Cereales y básicos
+    'Pan','Arroz','Cereales','Avena','Lentejas','Garbanzos','Galleta','Bizcocho',
+    // Más postres y otros
+    'Brownie','Tarta de manzana','Mousse','Helado de fresa','Crepe',
   ],
   animales: [
     'Perro','Gato','León','Elefante','Jirafa','Delfín','Ballena',
@@ -480,6 +549,19 @@ const WORDS = {
     'Rana','Salamandra','Axolote','Libélula','Araña','Escorpión',
     'Gaviota','Paloma','Cigüeña','Garza','Quetzal','Pájaro carpintero',
     'Ornitorrinco','Tapir','Pangolín','Okapi','Wombat',
+    // Mascotas y granja
+    'Hámster','Periquito','Canario','Pez de colores','Toro','Gallo','Pavo',
+    // Insectos / artrópodos
+    'Hormiga','Mosca','Mosquito','Avispa','Mantis religiosa','Polilla','Tarántula',
+    'Garrapata','Pulga','Ciempiés',
+    // Marinos adicionales
+    'Anguila','Calamar','Sepia','Almeja','Mejillón','Ostra','Cangrejo','Krill',
+    // Aves adicionales
+    'Lechuza','Grulla','Pavo real','Faisán','Gallo','Avispa','Buitre','Halcón',
+    // Reptiles
+    'Boa','Cobra','Pitón','Iguana','Lagartija','Gecko',
+    // Más exóticos
+    'Lince','Mapache','Mofeta','Armadillo','Perezoso',
   ],
   lugares: [
     'Torre Eiffel','Coliseo Romano','Machu Picchu','Gran Muralla China',
@@ -498,6 +580,18 @@ const WORDS = {
     'Marrakech','Dubrovnik','Santorini','Ibiza','Tenerife',
     'Moscú','San Petersburgo','Delhi','Mumbai','São Paulo',
     'Lima','Bogotá','Nairobi','Dubái','Patagonia','Fiordos noruegos','Serengeti',
+    // Ciudades españolas
+    'Sevilla','Granada','Bilbao','Málaga','Valencia','Zaragoza','Salamanca',
+    'San Sebastián','Cádiz','Toledo','Córdoba','Santiago de Compostela',
+    // Más monumentos
+    'Torre de Pisa','Cristo Redentor','Petra','Capilla Sixtina','Notre Dame',
+    'Mont Saint-Michel','Neuschwanstein','La Esfinge','Angkor Wat',
+    // Países
+    'España','Francia','Italia','Alemania','Japón','China','India','Brasil',
+    'Argentina','México','Estados Unidos','Reino Unido','Rusia','Australia','Canadá',
+    // Naturaleza
+    'Volcán','Géiser','Iceberg','Selva tropical','Tundra','Sabana','Glaciar',
+    'Río Amazonas','Río Nilo','Lago Titicaca','Lago Baikal','Cabo de Hornos',
   ],
   lol: [
     'Aatrox','Ahri','Akali','Alistar','Amumu','Anivia','Annie',
